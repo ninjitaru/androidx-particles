@@ -1,6 +1,6 @@
-package com.plattysoft.leonids.modifiers;
+package androidx.particles.modifiers;
 
-import com.plattysoft.leonids.Particle;
+import androidx.particles.Particle;
 
 public interface ParticleModifier {
 

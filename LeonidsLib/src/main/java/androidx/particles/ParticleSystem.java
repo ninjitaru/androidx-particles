@@ -1,4 +1,4 @@
-package com.plattysoft.leonids;
+package androidx.particles;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
@@ -17,15 +17,15 @@ import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 
-import com.plattysoft.leonids.initializers.AccelerationInitializer;
-import com.plattysoft.leonids.initializers.ParticleInitializer;
-import com.plattysoft.leonids.initializers.RotationInitializer;
-import com.plattysoft.leonids.initializers.RotationSpeedInitializer;
-import com.plattysoft.leonids.initializers.ScaleInitializer;
-import com.plattysoft.leonids.initializers.SpeeddByComponentsInitializer;
-import com.plattysoft.leonids.initializers.SpeedModuleAndRangeInitializer;
-import com.plattysoft.leonids.modifiers.AlphaModifier;
-import com.plattysoft.leonids.modifiers.ParticleModifier;
+import androidx.particles.initializers.AccelerationInitializer;
+import androidx.particles.initializers.ParticleInitializer;
+import androidx.particles.initializers.RotationInitializer;
+import androidx.particles.initializers.RotationSpeedInitializer;
+import androidx.particles.initializers.ScaleInitializer;
+import androidx.particles.initializers.SpeeddByComponentsInitializer;
+import androidx.particles.initializers.SpeedModuleAndRangeInitializer;
+import androidx.particles.modifiers.AlphaModifier;
+import androidx.particles.modifiers.ParticleModifier;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;

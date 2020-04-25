@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.view.MotionEvent;
 import android.view.animation.AccelerateInterpolator;
 
-import com.plattysoft.leonids.ParticleSystem;
+import androidx.particles.ParticleSystem;
 
 public class FollowCursorExampleActivity extends Activity  {
 

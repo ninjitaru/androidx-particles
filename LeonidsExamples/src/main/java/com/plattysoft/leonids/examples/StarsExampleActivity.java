@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-import com.plattysoft.leonids.ParticleSystem;
-import com.plattysoft.leonids.modifiers.ScaleModifier;
+import androidx.particles.ParticleSystem;
+import androidx.particles.modifiers.ScaleModifier;
 
 public class StarsExampleActivity extends Activity implements OnClickListener {
 

@@ -1,8 +1,8 @@
-package com.plattysoft.leonids;
+package androidx.particles;
 
 import java.util.List;
 
-import com.plattysoft.leonids.modifiers.ParticleModifier;
+import androidx.particles.modifiers.ParticleModifier;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

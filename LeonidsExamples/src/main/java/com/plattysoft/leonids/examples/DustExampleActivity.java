@@ -1,8 +1,8 @@
 package com.plattysoft.leonids.examples;
 
-import com.plattysoft.leonids.modifiers.AlphaModifier;
-import com.plattysoft.leonids.ParticleSystem;
-import com.plattysoft.leonids.modifiers.ScaleModifier;
+import androidx.particles.modifiers.AlphaModifier;
+import androidx.particles.ParticleSystem;
+import androidx.particles.modifiers.ScaleModifier;
 
 import android.app.Activity;
 import android.os.Bundle;

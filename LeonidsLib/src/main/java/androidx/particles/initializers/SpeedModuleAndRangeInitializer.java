@@ -1,6 +1,6 @@
-package com.plattysoft.leonids.initializers;
+package androidx.particles.initializers;
 
-import com.plattysoft.leonids.Particle;
+import androidx.particles.Particle;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package com.plattysoft.leonids;
+package androidx.particles;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.BitmapDrawable;

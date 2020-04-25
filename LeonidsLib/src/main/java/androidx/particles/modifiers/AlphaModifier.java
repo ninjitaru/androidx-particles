@@ -1,9 +1,9 @@
-package com.plattysoft.leonids.modifiers;
+package androidx.particles.modifiers;
 
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 
-import com.plattysoft.leonids.Particle;
+import androidx.particles.Particle;
 
 public class AlphaModifier implements ParticleModifier {
 

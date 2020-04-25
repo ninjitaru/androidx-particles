@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-import com.plattysoft.leonids.ParticleSystem;
+import androidx.particles.ParticleSystem;
 
 public class AnimatedParticlesExampleActivity extends Activity implements OnClickListener {
 	
