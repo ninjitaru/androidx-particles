@@ -20,8 +20,12 @@ android {
     }
 }
 
-def siteUrl = 'http://plattysoft.github.io/Leonids/'
-def gitUrl = 'https://github.com/plattysoft/Leonids.git'
+def libraryName = 'AndroidX Particles'
+def artifactName = 'androidx-particles'
+
+def siteUrl = 'http://thomorl.github.io/androidx-particles/'
+def gitUrl = 'https://github.com/thomorl/androidx-particles.git'
+
 group = "one.atpc.thomorl"
 version = currentVersion
 
@@ -36,7 +40,7 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "maven"
-        name = "Leonids"
+        name = libraryName
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]
@@ -57,10 +61,10 @@ install {
         pom {
             project {
                 packaging 'aar'
-                artifactId 'LeonidsLib'
+                artifactId artifactName
                 version = currentVersion
                 // Add your description here
-                name 'Leonids'
+                name libraryName
                 description = 'A Particle System Library for standard Android UI.'
                 url siteUrl
 
@@ -96,7 +100,7 @@ task sourcesJar(type: Jar) {
 task classesJar(type: Jar) {
     //from android.sourceSets.main.java
     from 'build/intermediates/classes/release/'
-    archiveName "LeonidsLib-${currentVersion}.jar"
+    archiveName "${artifactName}-${currentVersion}.jar"
 }
 
 task generateJavadoc(type: Javadoc) {
