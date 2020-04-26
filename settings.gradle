@@ -1,2 +1,8 @@
-include ':LeonidsLib'
+include ':lib'
 include ':LeonidsExamples'
+
+// Set the root project name
+rootProject.name = 'androidx-particles-root'
+
+// Set the library module's name
+project(':lib').name = 'androidx-particles'
