@@ -1,8 +1,8 @@
-Leonids
+AndroidX Particles
 ==========================
-[![Badge](http://www.libtastic.com/static/osbadges/277.png)](http://www.libtastic.com/technology/277/)
+[![GitHub release](https://img.shields.io/github/v/release/thomorl/androidx-particles?style=flat-square)](https://github.com/thomorl/androidx-particles/releases)
 
-Leonids is a particle system library that works with the standard Android UI.
+This library is a fork of [Leonids](https://github.com/plattysoft/Leonids), a particle system library that works with the standard Android UI.
 
 The library is extremely lightweight, [LeonidsLib.jar](https://github.com/plattysoft/Leonids/releases/download/1.3.2/LeonidsLib-1.3.2.jar) is just 81Kb.
 
@@ -61,7 +61,7 @@ Then you configure the particle system. In this case we specify that the particl
 
 Finally, we call oneShot, passing the view from which the particles will be launched and saying how many particles we want to be shot.
 
-![](https://raw.githubusercontent.com/plattysoft/Leonids/master/images/Leonids_one_shot.gif)
+![Leonids fireworks demo](docs/images/leonids_one_shot.gif)
 
 ## Emitters
 
@@ -84,7 +84,7 @@ new ParticleSystem(this, 80, R.drawable.confeti3, 10000)
 
 It uses an initializer for the Speed as module and angle ranges, a fixed speed rotaion and extenal acceleration.
 
-![](https://raw.githubusercontent.com/plattysoft/Leonids/master/images/leonids_confeti.gif)
+![Leonids confetti demo](docs/images/leonids_confetti.gif)
 
 ## Available Methods
 
@@ -174,3 +174,7 @@ Leonids requires minSDK 11 because it uses ValueAnimators. It should be very eas
 The library is Free Software, you can use it, extended with no requirement to open source your changes. You can also make paid apps using it.
 
 Each Particle System only uses one image for the particles. If you want different particles to be emitted, you need to create a Particle System for each one of them.
+
+## Acknowledgements
+
+Leonids was created by Raul Portales ([@plattysoft](https://github.com/plattysoft)).
