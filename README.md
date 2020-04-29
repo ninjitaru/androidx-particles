@@ -61,7 +61,7 @@ Then you configure the particle system. In this case we specify that the particl
 
 Finally, we call oneShot, passing the view from which the particles will be launched and saying how many particles we want to be shot.
 
-![](https://raw.githubusercontent.com/plattysoft/Leonids/master/images/Leonids_one_shot.gif)
+![Leonids fireworks demo](docs/images/leonids_one_shot.gif)
 
 ## Emitters
 
@@ -84,7 +84,7 @@ new ParticleSystem(this, 80, R.drawable.confeti3, 10000)
 
 It uses an initializer for the Speed as module and angle ranges, a fixed speed rotaion and extenal acceleration.
 
-![](https://raw.githubusercontent.com/plattysoft/Leonids/master/images/leonids_confeti.gif)
+![Leonids confetti demo](docs/images/leonids_confetti.gif)
 
 ## Available Methods
 
