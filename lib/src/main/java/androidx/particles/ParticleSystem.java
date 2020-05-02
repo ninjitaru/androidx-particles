@@ -252,7 +252,7 @@ public class ParticleSystem {
 	/**
 	 * Sets the frames per second of <em>ALL</em> ParticleSystems.
 	 *
-	 * @param fps the desired frames per second.
+	 * @param fps The desired frames per second.
 	 */
 	public static void setFPS(double fps) {
 		TIMER_TASK_INTERVAL = Math.round(1000 / fps);
@@ -261,7 +261,7 @@ public class ParticleSystem {
 	/**
 	 * Adds a modifier to the Particle system, it will be executed on each update.
 	 *
-	 * @param modifier modifier to be added to the ParticleSystem.
+	 * @param modifier Modifier to be added to the ParticleSystem.
 	 */
 	public ParticleSystem addModifier(ParticleModifier modifier) {
 		mModifiers.add(modifier);
@@ -421,10 +421,10 @@ public class ParticleSystem {
 	}
 
 	/**
-	 * Configures a fade out for the particles when they disappear.
+	 * Configures a fade-out for the particles when they disappear.
 	 *
-	 * @param milisecondsBeforeEnd fade out duration in milliseconds.
-	 * @param interpolator the interpolator for the fade out (default is linear).
+	 * @param milisecondsBeforeEnd Fade-out duration in milliseconds.
+	 * @param interpolator The interpolator for the fade-out (default is linear).
 	 */
 	public ParticleSystem setFadeOut(long milisecondsBeforeEnd, Interpolator interpolator) {
 		mModifiers.add(new AlphaModifier(255, 0, mTimeToLive-milisecondsBeforeEnd, mTimeToLive, interpolator));
@@ -432,9 +432,9 @@ public class ParticleSystem {
 	}
 
 	/**
-	 * Configures a fade out for the particles when they disappear.
+	 * Configures a fade-out for the particles when they disappear.
 	 *
-	 * @param duration fade out duration in milliseconds.
+	 * @param duration Fade-out duration in milliseconds.
 	 */
 	public ParticleSystem setFadeOut(long duration) {
 		return setFadeOut(duration, new LinearInterpolator());
@@ -444,10 +444,10 @@ public class ParticleSystem {
 	 * Starts emitting particles from a specific view. If at some point the number goes over the amount of particles availabe on create
 	 * no new particles will be created.
 	 *
-	 * @param emitter  View from which center the particles will be emitted.
+	 * @param emitter View from which center the particles will be emitted.
 	 * @param gravity Which position among the view the emission takes place.
 	 * @param particlesPerSecond Number of particles per second that will be emitted (evenly distributed).
-	 * @param emittingTime time the emitter will be emitting particles.
+	 * @param emittingTime Time the emitter will be emitting particles.
 	 */
 	public void emitWithGravity (View emitter, int gravity, int particlesPerSecond, int emittingTime) {
 		// Setup emitter
@@ -459,9 +459,9 @@ public class ParticleSystem {
 	 * Starts emitting particles from a specific view. If at some point the number goes over the amount of particles availabe on create
 	 * no new particles will be created.
 	 *
-	 * @param emitter  View from which center the particles will be emitted.
+	 * @param emitter View from which center the particles will be emitted.
 	 * @param particlesPerSecond Number of particles per second that will be emitted (evenly distributed).
-	 * @param emittingTime time the emitter will be emitting particles.
+	 * @param emittingTime Time the emitter will be emitting particles.
 	 */
 	public void emit (View emitter, int particlesPerSecond, int emittingTime) {
 		emitWithGravity(emitter, Gravity.CENTER, particlesPerSecond, emittingTime);
@@ -471,7 +471,7 @@ public class ParticleSystem {
 	 * Starts emitting particles from a specific view. If at some point the number goes over the amount of particles availabe on create
 	 * no new particles will be created.
 	 *
-	 * @param emitter  View from which center the particles will be emitted.
+	 * @param emitter View from which center the particles will be emitted.
 	 * @param particlesPerSecond Number of particles per second that will be emitted (evenly distributed).
 	 */
 	public void emit (View emitter, int particlesPerSecond) {
@@ -483,7 +483,7 @@ public class ParticleSystem {
 	 * Starts emitting particles from a specific view. If at some point the number goes over the amount of particles availabe on create
 	 * no new particles will be created.
 	 *
-	 * @param emitter  View from which center the particles will be emitted.
+	 * @param emitter View from which center the particles will be emitted.
 	 * @param gravity Which position among the view the emission takes place.
 	 * @param particlesPerSecond Number of particles per second that will be emitted (evenly distributed).
 	 */
@@ -547,10 +547,10 @@ public class ParticleSystem {
 	}
 
 	/**
-	 * Launches particles in one Shot.
+	 * Launches particles in one shot.
 	 *
 	 * @param emitter View from which center the particles will be emitted.
-	 * @param numParticles number of particles launched on the one shot.
+	 * @param numParticles Number of particles launched on the one shot.
 	 */
 	public void oneShot(View emitter, int numParticles) {
 		oneShot(emitter, numParticles, new LinearInterpolator());
@@ -560,8 +560,8 @@ public class ParticleSystem {
 	 * Launches particles in one Shot using a special Interpolator.
 	 *
 	 * @param emitter View from which center the particles will be emitted.
-	 * @param numParticles number of particles launched on the one shot.
-	 * @param interpolator the interpolator for the time.
+	 * @param numParticles Number of particles launched on the one shot.
+	 * @param interpolator The interpolator for the time.
 	 */
 	public void oneShot(View emitter, int numParticles, Interpolator interpolator) {
 		configureEmitter(emitter, Gravity.CENTER);
