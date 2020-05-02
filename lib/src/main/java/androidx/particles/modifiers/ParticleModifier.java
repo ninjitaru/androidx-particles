@@ -5,7 +5,8 @@ import androidx.particles.Particle;
 public interface ParticleModifier {
 
 	/**
-	 * modifies the specific value of a particle given the current miliseconds
+	 * Modifies the specific value of a particle given the current milliseconds.
+	 *
 	 * @param particle
 	 * @param miliseconds
 	 */

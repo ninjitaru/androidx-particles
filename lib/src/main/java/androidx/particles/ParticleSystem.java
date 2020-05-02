@@ -104,12 +104,12 @@ public class ParticleSystem {
 	}
 
 	/**
-	 * Creates a particle system with the given parameters
+	 * Creates a particle system with the given parameters.
 	 *
-	 * @param parentView The parent view group
-	 * @param drawable The drawable to use as a particle
-	 * @param maxParticles The maximum number of particles
-	 * @param timeToLive The time to live for the particles
+	 * @param parentView The parent view group.
+	 * @param drawable The drawable to use as a particle.
+	 * @param maxParticles The maximum number of particles.
+	 * @param timeToLive The time to live for the particles.
 	 */
 	public ParticleSystem(ViewGroup parentView, int maxParticles, Drawable drawable, long timeToLive) {
 		this(parentView, maxParticles, timeToLive);
@@ -139,49 +139,50 @@ public class ParticleSystem {
 	}
 
 	/**
-	 * Creates a particle system with the given parameters
+	 * Creates a particle system with the given parameters.
 	 *
-	 * @param a The parent activity
-	 * @param maxParticles The maximum number of particles
-	 * @param drawableRedId The drawable resource to use as particle (supports Bitmaps and Animations)
-	 * @param timeToLive The time to live for the particles
+	 * @param a The parent activity.
+	 * @param maxParticles The maximum number of particles.
+	 * @param drawableRedId The drawable resource to use as particle (supports Bitmaps and Animations).
+	 * @param timeToLive The time to live for the particles.
 	 */
 	public ParticleSystem(Activity a, int maxParticles, int drawableRedId, long timeToLive) {
 		this(a, maxParticles, a.getResources().getDrawable(drawableRedId), timeToLive, android.R.id.content);
 	}
 
     /**
-     * Creates a particle system with the given parameters
+     * Creates a particle system with the given parameters.
      *
-     * @param a The parent activity
-     * @param maxParticles The maximum number of particles
-     * @param drawableRedId The drawable resource to use as particle (supports Bitmaps and Animations)
-     * @param timeToLive The time to live for the particles
-     * @param parentViewId The view Id for the parent of the particle system
+     * @param a The parent activity.
+     * @param maxParticles The maximum number of particles.
+     * @param drawableRedId The drawable resource to use as particle (supports Bitmaps and Animations).
+     * @param timeToLive The time to live for the particles.
+     * @param parentViewId The view Id for the parent of the particle system.
      */
     public ParticleSystem(Activity a, int maxParticles, int drawableRedId, long timeToLive, int parentViewId) {
         this(a, maxParticles, a.getResources().getDrawable(drawableRedId), timeToLive, parentViewId);
     }
 
     /**
-     * Utility constructor that receives a Drawable
+     * Utility constructor that receives a Drawable.
      *
-     * @param a The parent activity
-     * @param maxParticles The maximum number of particles
-     * @param drawable The drawable to use as particle (supports Bitmaps and Animations)
-     * @param timeToLive The time to live for the particles
+     * @param a The parent activity.
+     * @param maxParticles The maximum number of particles.
+     * @param drawable The drawable to use as particle (supports Bitmaps and Animations).
+     * @param timeToLive The time to live for the particles.
      */
     public ParticleSystem(Activity a, int maxParticles, Drawable drawable, long timeToLive) {
         this(a, maxParticles, drawable, timeToLive, android.R.id.content);
     }
+
 	/**
-	 * Utility constructor that receives a Drawable
+	 * Utility constructor that receives a Drawable.
 	 *
-	 * @param a The parent activity
-	 * @param maxParticles The maximum number of particles
-	 * @param drawable The drawable to use as particle (supports Bitmaps and Animations)
-	 * @param timeToLive The time to live for the particles
-     * @param parentViewId The view Id for the parent of the particle system
+	 * @param a The parent activity.
+	 * @param maxParticles The maximum number of particles.
+	 * @param drawable The drawable to use as particle (supports Bitmaps and Animations).
+	 * @param timeToLive The time to live for the particles.
+     * @param parentViewId The view Id for the parent of the particle system.
 	 */
 	public ParticleSystem(Activity a, int maxParticles, Drawable drawable, long timeToLive, int parentViewId) {
 		this((ViewGroup) a.findViewById(parentViewId), maxParticles, drawable, timeToLive);
@@ -192,24 +193,25 @@ public class ParticleSystem {
 	}
 
     /**
-     * Utility constructor that receives a Bitmap
+     * Utility constructor that receives a Bitmap.
      *
-     * @param a The parent activity
-     * @param maxParticles The maximum number of particles
-     * @param bitmap The bitmap to use as particle
-     * @param timeToLive The time to live for the particles
+     * @param a The parent activity.
+     * @param maxParticles The maximum number of particles.
+     * @param bitmap The bitmap to use as particle.
+     * @param timeToLive The time to live for the particles.
      */
     public ParticleSystem(Activity a, int maxParticles, Bitmap bitmap, long timeToLive) {
         this(a, maxParticles, bitmap, timeToLive, android.R.id.content);
     }
+
 	/**
-	 * Utility constructor that receives a Bitmap
+	 * Utility constructor that receives a Bitmap.
 	 *
-	 * @param a The parent activity
-	 * @param maxParticles The maximum number of particles
-	 * @param bitmap The bitmap to use as particle
-	 * @param timeToLive The time to live for the particles
-     * @param parentViewId The view Id for the parent of the particle system
+	 * @param a The parent activity.
+	 * @param maxParticles The maximum number of particles.
+	 * @param bitmap The bitmap to use as particle.
+	 * @param timeToLive The time to live for the particles.
+     * @param parentViewId The view Id for the parent of the particle system.
 	 */
 	public ParticleSystem(Activity a, int maxParticles, Bitmap bitmap, long timeToLive, int parentViewId) {
 		this((ViewGroup) a.findViewById(parentViewId), maxParticles, timeToLive);
@@ -219,25 +221,25 @@ public class ParticleSystem {
 	}
 
     /**
-     * Utility constructor that receives an AnimationDrawable
+     * Utility constructor that receives an AnimationDrawable.
      *
-     * @param a The parent activity
-     * @param maxParticles The maximum number of particles
-     * @param animation The animation to use as particle
-     * @param timeToLive The time to live for the particles
+     * @param a The parent activity.
+     * @param maxParticles The maximum number of particles.
+     * @param animation The animation to use as particle.
+     * @param timeToLive The time to live for the particles.
      */
     public ParticleSystem(Activity a, int maxParticles, AnimationDrawable animation, long timeToLive) {
         this(a, maxParticles, animation, timeToLive, android.R.id.content);
     }
 
 	/**
-	 * Utility constructor that receives an AnimationDrawable
+	 * Utility constructor that receives an AnimationDrawable.
 	 *
-	 * @param a The parent activity
-	 * @param maxParticles The maximum number of particles
-	 * @param animation The animation to use as particle
-	 * @param timeToLive The time to live for the particles
-     * @param parentViewId The view Id for the parent of the particle system
+	 * @param a The parent activity.
+	 * @param maxParticles The maximum number of particles.
+	 * @param animation The animation to use as particle.
+	 * @param timeToLive The time to live for the particles.
+     * @param parentViewId The view Id for the parent of the particle system.
 	 */
 	public ParticleSystem(Activity a, int maxParticles, AnimationDrawable animation, long timeToLive, int parentViewId) {
 		this((ViewGroup) a.findViewById(parentViewId), maxParticles, timeToLive);
@@ -248,9 +250,9 @@ public class ParticleSystem {
 	}
 
 	/**
-	 * Sets the frames per second of <em>ALL</em> ParticleSystems
+	 * Sets the frames per second of <em>ALL</em> ParticleSystems.
 	 *
-	 * @param fps the desired frames per second
+	 * @param fps the desired frames per second.
 	 */
 	public static void setFPS(double fps) {
 		TIMER_TASK_INTERVAL = Math.round(1000 / fps);
@@ -259,7 +261,7 @@ public class ParticleSystem {
 	/**
 	 * Adds a modifier to the Particle system, it will be executed on each update.
 	 *
-	 * @param modifier modifier to be added to the ParticleSystem
+	 * @param modifier modifier to be added to the ParticleSystem.
 	 */
 	public ParticleSystem addModifier(ParticleModifier modifier) {
 		mModifiers.add(modifier);
@@ -419,10 +421,10 @@ public class ParticleSystem {
 	}
 
 	/**
-	 * Configures a fade out for the particles when they disappear
+	 * Configures a fade out for the particles when they disappear.
 	 *
-	 * @param milisecondsBeforeEnd fade out duration in milliseconds
-	 * @param interpolator the interpolator for the fade out (default is linear)
+	 * @param milisecondsBeforeEnd fade out duration in milliseconds.
+	 * @param interpolator the interpolator for the fade out (default is linear).
 	 */
 	public ParticleSystem setFadeOut(long milisecondsBeforeEnd, Interpolator interpolator) {
 		mModifiers.add(new AlphaModifier(255, 0, mTimeToLive-milisecondsBeforeEnd, mTimeToLive, interpolator));
@@ -430,9 +432,9 @@ public class ParticleSystem {
 	}
 
 	/**
-	 * Configures a fade out for the particles when they disappear
+	 * Configures a fade out for the particles when they disappear.
 	 *
-	 * @param duration fade out duration in milliseconds
+	 * @param duration fade out duration in milliseconds.
 	 */
 	public ParticleSystem setFadeOut(long duration) {
 		return setFadeOut(duration, new LinearInterpolator());
@@ -440,12 +442,12 @@ public class ParticleSystem {
 
 	/**
 	 * Starts emitting particles from a specific view. If at some point the number goes over the amount of particles availabe on create
-	 * no new particles will be created
+	 * no new particles will be created.
 	 *
-	 * @param emitter  View from which center the particles will be emited
-	 * @param gravity Which position among the view the emission takes place
-	 * @param particlesPerSecond Number of particles per second that will be emited (evenly distributed)
-	 * @param emittingTime time the emitter will be emitting particles
+	 * @param emitter  View from which center the particles will be emitted.
+	 * @param gravity Which position among the view the emission takes place.
+	 * @param particlesPerSecond Number of particles per second that will be emitted (evenly distributed).
+	 * @param emittingTime time the emitter will be emitting particles.
 	 */
 	public void emitWithGravity (View emitter, int gravity, int particlesPerSecond, int emittingTime) {
 		// Setup emitter
@@ -455,11 +457,11 @@ public class ParticleSystem {
 
 	/**
 	 * Starts emitting particles from a specific view. If at some point the number goes over the amount of particles availabe on create
-	 * no new particles will be created
+	 * no new particles will be created.
 	 *
-	 * @param emitter  View from which center the particles will be emited
-	 * @param particlesPerSecond Number of particles per second that will be emited (evenly distributed)
-	 * @param emittingTime time the emitter will be emitting particles
+	 * @param emitter  View from which center the particles will be emitted.
+	 * @param particlesPerSecond Number of particles per second that will be emitted (evenly distributed).
+	 * @param emittingTime time the emitter will be emitting particles.
 	 */
 	public void emit (View emitter, int particlesPerSecond, int emittingTime) {
 		emitWithGravity(emitter, Gravity.CENTER, particlesPerSecond, emittingTime);
@@ -467,10 +469,10 @@ public class ParticleSystem {
 
 	/**
 	 * Starts emitting particles from a specific view. If at some point the number goes over the amount of particles availabe on create
-	 * no new particles will be created
+	 * no new particles will be created.
 	 *
-	 * @param emitter  View from which center the particles will be emited
-	 * @param particlesPerSecond Number of particles per second that will be emited (evenly distributed)
+	 * @param emitter  View from which center the particles will be emitted.
+	 * @param particlesPerSecond Number of particles per second that will be emitted (evenly distributed).
 	 */
 	public void emit (View emitter, int particlesPerSecond) {
 		// Setup emitter
@@ -479,11 +481,11 @@ public class ParticleSystem {
 
 	/**
 	 * Starts emitting particles from a specific view. If at some point the number goes over the amount of particles availabe on create
-	 * no new particles will be created
+	 * no new particles will be created.
 	 *
-	 * @param emitter  View from which center the particles will be emited
-	 * @param gravity Which position among the view the emission takes place
-	 * @param particlesPerSecond Number of particles per second that will be emited (evenly distributed)
+	 * @param emitter  View from which center the particles will be emitted.
+	 * @param gravity Which position among the view the emission takes place.
+	 * @param particlesPerSecond Number of particles per second that will be emitted (evenly distributed).
 	 */
 	public void emitWithGravity (View emitter, int gravity, int particlesPerSecond) {
 		// Setup emitter
@@ -545,21 +547,21 @@ public class ParticleSystem {
 	}
 
 	/**
-	 * Launches particles in one Shot
+	 * Launches particles in one Shot.
 	 *
-	 * @param emitter View from which center the particles will be emited
-	 * @param numParticles number of particles launched on the one shot
+	 * @param emitter View from which center the particles will be emitted.
+	 * @param numParticles number of particles launched on the one shot.
 	 */
 	public void oneShot(View emitter, int numParticles) {
 		oneShot(emitter, numParticles, new LinearInterpolator());
 	}
 
 	/**
-	 * Launches particles in one Shot using a special Interpolator
+	 * Launches particles in one Shot using a special Interpolator.
 	 *
-	 * @param emitter View from which center the particles will be emited
-	 * @param numParticles number of particles launched on the one shot
-	 * @param interpolator the interpolator for the time
+	 * @param emitter View from which center the particles will be emitted.
+	 * @param numParticles number of particles launched on the one shot.
+	 * @param interpolator the interpolator for the time.
 	 */
 	public void oneShot(View emitter, int numParticles, Interpolator interpolator) {
 		configureEmitter(emitter, Gravity.CENTER);
