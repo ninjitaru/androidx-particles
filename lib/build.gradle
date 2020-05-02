@@ -112,7 +112,13 @@ task generateJavadoc(type: Javadoc) {
     classpath = project.files(android.getBootClasspath().join(File.pathSeparator))
     project.logger.lifecycle(classpath.getFiles().toString())
 
-    options.linksOffline 'http://developer.android.com/reference/', "${android.sdkDirectory}/docs/reference"
+    options {
+        charSet = 'UTF-8'
+        encoding = 'UTF-8'
+        docEncoding = 'UTF-8'
+
+        linksOffline 'http://developer.android.com/reference/', "${android.sdkDirectory}/docs/reference"
+    }
 }
 
 artifacts {
