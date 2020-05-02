@@ -23,19 +23,20 @@ android {
 def libraryName = 'AndroidX Particles'
 def artifactName = 'androidx-particles'
 
-def siteUrl = 'http://thomorl.github.io/androidx-particles/'
-def gitUrl = 'https://github.com/thomorl/androidx-particles.git'
+def siteUrl = 'https://thomorl.github.io/androidx-particles/'
+def gitUrl  = 'https://github.com/thomorl/androidx-particles.git'
 
 group = "one.atpc.thomorl"
 version = currentVersion
 
+description = libraryName
 
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
+final Properties localProperties = new Properties()
+localProperties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 bintray {
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
+    user = localProperties.getProperty("bintray.user")
+    key = localProperties.getProperty("bintray.apikey")
 
     configurations = ['archives']
     pkg {
@@ -94,7 +95,7 @@ install {
 
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
+    archiveClassifier = 'sources'
 }
 
 task classesJar(type: Jar) {
@@ -104,11 +105,14 @@ task classesJar(type: Jar) {
 }
 
 task generateJavadoc(type: Javadoc) {
+    group = 'documentation'
+    description = 'Generate Javadoc'
+
     source = android.sourceSets.main.java.srcDirs
-    ext.cp = android.libraryVariants.collect { variant ->
-        variant.javaCompile.classpath.files
-    }
-    classpath = files(ext.cp)
+    classpath = project.files(android.getBootClasspath().join(File.pathSeparator))
+    project.logger.lifecycle(classpath.getFiles().toString())
+
+    options.linksOffline 'http://developer.android.com/reference/', "${android.sdkDirectory}/docs/reference"
 }
 
 artifacts {
