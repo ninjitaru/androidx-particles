@@ -21,12 +21,12 @@ android {
 }
 
 def libraryName = 'AndroidX Particles'
-def artifactName = 'androidx-particles'
+def artifactName = 'particles'
 
 def siteUrl = 'https://thomorl.github.io/androidx-particles/'
 def gitUrl  = 'https://github.com/thomorl/androidx-particles.git'
 
-group = "one.atpc.thomorl"
+group = "androidx.particles"
 version = currentVersion
 
 description = libraryName
@@ -103,6 +103,8 @@ task classesJar(type: Jar) {
     from 'build/intermediates/classes/release/'
     archiveName "${artifactName}-${currentVersion}.jar"
 }
+
+// TODO task javadocJar
 
 task generateJavadoc(type: Javadoc) {
     group = 'documentation'
