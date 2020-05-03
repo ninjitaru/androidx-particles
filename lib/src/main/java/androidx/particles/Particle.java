@@ -52,7 +52,7 @@ public class Particle {
 		mPaint = new Paint();
 	}
 	
-	public Particle (Bitmap bitmap) {
+	public Particle(Bitmap bitmap) {
 		this();
 		mImage = bitmap;
 	}
@@ -74,7 +74,7 @@ public class Particle {
 		mTimeToLive = timeToLive;
 	}
 
-	public boolean update (long miliseconds) {
+	public boolean update(long miliseconds) {
 		long realMiliseconds = miliseconds - mStartingMilisecond;
 		if (realMiliseconds > mTimeToLive) {
 			return false;
@@ -88,7 +88,7 @@ public class Particle {
 		return true;
 	}
 	
-	public void draw (Canvas c) {
+	public void draw(Canvas c) {
 		mMatrix.reset();
 		mMatrix.postRotate(mRotation, mBitmapHalfWidth, mBitmapHalfHeight);
 		mMatrix.postScale(mScale, mScale, mBitmapHalfWidth, mBitmapHalfHeight);

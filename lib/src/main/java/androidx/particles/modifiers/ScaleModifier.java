@@ -15,7 +15,7 @@ public class ScaleModifier implements ParticleModifier {
 	private float mValueIncrement;
 	private Interpolator mInterpolator;
 
-	public ScaleModifier (float initialValue, float finalValue, long startMilis, long endMilis, Interpolator interpolator) {
+	public ScaleModifier(float initialValue, float finalValue, long startMilis, long endMilis, Interpolator interpolator) {
 		mInitialValue = initialValue;
 		mFinalValue = finalValue;
 		mStartTime = startMilis;
@@ -25,7 +25,7 @@ public class ScaleModifier implements ParticleModifier {
 		mInterpolator = interpolator;
 	}
 	
-	public ScaleModifier (float initialValue, float finalValue, long startMilis, long endMilis) {
+	public ScaleModifier(float initialValue, float finalValue, long startMilis, long endMilis) {
 		this (initialValue, finalValue, startMilis, endMilis, new LinearInterpolator());
 	}
 	
