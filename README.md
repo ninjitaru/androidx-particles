@@ -8,14 +8,14 @@ You can download the [Leonids Demo from Google Play](https://play.google.com/sto
 
 ## Setup
 
-Leonids is available from JCenter.
+AndroidX Particles is available from JCenter.
 
 ### Android Studio / Gradle
 
 Add the following dependency to the build.gradle of your project:
 ```
 dependencies {
-    compile 'com.plattysoft.leonids:LeonidsLib:1.3.2'
+    implementation 'androidx.particles:particles:1.3.3-rc01'
 }
 ```
 Note: If you get an error, you may need to include the JCenter repository:
@@ -49,9 +49,9 @@ new ParticleSystem(this, numParticles, drawableResId, timeToLive)
 
 Note that the particle system checks the position of the anchor view when `oneShot()` (or `emit()`) is called, so it requires the views to be measured. This means that **the particle system won't work properly if you call `oneShot()` or `emit()` during onCreate or onStart**. For more information, check the [FAQ](https://github.com/thomorl/androidx-particles/wiki/FAQ#my-particles-are-always-shown-in-the-top-left-corner-what-is-going-on).
 
-When you create the particle system, you specify how many particles it will use at maximum, the resourceId of the drawable you want to use for the particles, and how long the particles will live.
+When you create the particle system, you specify how many particles it will use at maximum, the resourceId or the drawable you want to use for the particles, and how long the particles will live.
 
-Then you configure the particle system. In this case, we specify that the particles will have a speed between 0.2 and 0.5 pixels per millisecond (support for dips will be included in the future). Since we did not provide an angle range, it will be considered as "any angle".
+Then you configure the particle system. In this case, we specify that the particles will have a speed between `0.2` and `0.5` pixels per millisecond (support for _dp_ will be included in the future). Since we did not provide an angle range, it will be considered as "any angle" (0° – 360°).
 
 Finally, we call `oneShot()`, passing the view from which the particles will be launched and saying how many particles we want to be shot.
 
@@ -76,94 +76,19 @@ new ParticleSystem(this, 80, R.drawable.confeti3, 10000)
 .emit(findViewById(R.id.emiter_top_left), 8);
 ```
 
-It uses an initializer for the speed as module and angle ranges, a fixed speed rotaion and extenal acceleration.
+It uses an initializer for the speed as module and angle ranges, a fixed speed rotation and external acceleration.
 
 ![Leonids confetti demo](docs/images/leonids_confetti.gif)
 
-## Available Methods
+## Documentation
 
-List of the methods available on the class `ParticleSystem`.
+Use the [Cheat Sheet](https://github.com/thomorl/androidx-particles/wiki/Cheat-Sheet) or [FAQ](https://github.com/thomorl/androidx-particles/wiki/FAQ) pages in the [Wiki](https://github.com/thomorl/androidx-particles/wiki) to get a quick overview.
 
-### Constructors
-
-All constructors use the activity, the maximum number of particles and the time to live. The difference is in how the image for the particles is specified. 
-
-Supported drawables are: BitmapDrawable and AnimationDrawable.
-
-* _ParticleSystem(Activity a, int maxParticles, int drawableRedId, long timeToLive)_
-* _ParticleSystem(Activity a, int maxParticles, Drawable drawable, long timeToLive)_
-* _ParticleSystem(Activity a, int maxParticles, Bitmap bitmap, long timeToLive)_
-* _ParticleSystem(Activity a, int maxParticles, AnimationDrawable animation, long timeToLive)_
-
-There are also constructors that recieve a view id to use as the parent so you can put the particle system on the background (or between any two views)
-
-* _ParticleSystem(Activity a, int maxParticles, int drawableRedId, long timeToLive, int parentViewId)_
-* _ParticleSystem(Activity a, int maxParticles, Drawable drawable, long timeToLive, int parentViewId)_
-* _ParticleSystem(Activity a, int maxParticles, Bitmap bitmap, long timeToLive, int parentViewId)_
-* _ParticleSystem(Activity a, int maxParticles, AnimationDrawable animation, long timeToLive, int parentViewId)_
-
-And another constructor that receives a parent viewgroup and drawable for use in places where it is not practical to pass a reference to an Activity
-
-* _ParticleSystem(ViewGroup parentView, int maxParticles, Drawable drawable, long timeToLive)_
-
-### Configuration
-
-Available methods on the Particle system for configuration are:
-
-* _setSpeedRange(float speedMin, float speedMax)_: Uses 0-360 as the angle range
-* _setSpeedModuleAndAngleRange(float speedMin, float speedMax, int minAngle, int maxAngle)_
-* _setSpeedByComponentsRange(float speedMinX, float speedMaxX, float speedMinY, float speedMaxY)_
-* _setInitialRotationRange (int minAngle, int maxAngle)_
-* _setScaleRange(float minScale, float maxScale)_
-* _setRotationSpeed(float rotationSpeed)_
-* _setRotationSpeedRange(float minRotationSpeed, float maxRotationSpeed)_
-* _setAcceleration(float acceleration, float angle)_
-* _setFadeOut(long milisecondsBeforeEnd, Interpolator interpolator)_: Utility method for a simple fade out effect using an interpolator
-* _setFadeOut(long duration)_:Utility method for a simple fade out
-
-You can start the particle system "in the future" if you want to have the particles already created and moving using
-
-_setStartTime(int time)_
-
-For more complex modifiers, you can use the method _addModifier(ParticleModifier modifier)_. Available modifiers are:
-
-* _AlphaModifier (int initialValue, int finalValue, long startMilis, long endMilis)_
-* _AlphaModifier (int initialValue, int finalValue, long startMilis, long endMilis, Interpolator interpolator)_
-* _ScaleModifier (float initialValue, float finalValue, long startMilis, long endMilis)_
-* _ScaleModifier (float initialValue, float finalValue, long startMilis, long endMilis, Interpolator interpolator)_
-
-### One shot
-
-Make one shot using from the anchor view using the number of particles specified, an interpolator is optional
-
-* _oneShot(View anchor, int numParticles)_
-* _oneShot(View anchor, int numParticles, Interpolator interpolator)_
-
-### Emitters
-
-Emits the number of particles per second from the emitter. If emittingTime is set, the emitter stops after that time, otherwise it is continuous.
-
-#### Basic emitters
-* _emit (View emitter, int particlesPerSecond)_
-* _emit (View emitter, int particlesPerSecond, int emittingTime)_
-
-#### Emit based on (x,y) coordinates
-* _emit (int emitterX, int emitterY, int particlesPerSecond)_
-* _emit (int emitterX, int emitterY, int particlesPerSecond, int emitingTime)_
-
-#### Emit with Gravity 
-* _emitWithGravity (View emiter, int gravity, int particlesPerSecond)_
-* _emitWithGravity (View emiter, int gravity, int particlesPerSecond, int emitingTime)_
- 
-#### Update, stop, and cancel
-* _updateEmitPoint (int emitterX, int emitterY)_ Updates dynamically the point of emission.
-* _updateEmitPoint (View emiter, int gravity)_ Updates dynamically the point of emission using gravity.
-* _stopEmitting ()_ Stops the emission of new particles, but the active ones are updated.
-* _cancel ()_ Stops the emission of new particles and cancles the active ones.
+For a more detailed documentation, see the [Reference](#not-implemented).
 
 ## Other Details
 
-Leonids requires minSDK 14 (Ice Cream Sandwich).
+AndroidX Particles requires minSDK 14 / Android 4.0 (Ice Cream Sandwich).
 
 The library is open-source software, you can use it, extended with no requirement to open-source your changes. You can also make paid apps using it.
 
