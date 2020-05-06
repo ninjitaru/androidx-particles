@@ -2,9 +2,9 @@ include ':lib'
 include ':examples'
 
 // Set the root project's name
-rootProject.name = 'androidx-particles-root'
+rootProject.name = 'androidx-particles'
 
 // Set the library module's name
-project(':lib').name = 'androidx-particles'
+project(':lib').name = 'particles'
 // Set the example module's name
 project(':examples').name = 'LeonidsExamples'       // Called 'LeonidsExamples' for historical reasons
