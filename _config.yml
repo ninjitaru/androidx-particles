@@ -1,6 +1,5 @@
-title: Leonids
-description: A Particle System for standard Android UI
-google_analytics: UA-28165246-2
+title: AndroidX Particles
+description: A particle system library for standard Android UI.
 show_downloads: true
 theme: jekyll-theme-slate
 

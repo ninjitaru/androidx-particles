@@ -1,50 +1,44 @@
-Leonids
+AndroidX Particles
 ==========================
+[![GitHub release](https://img.shields.io/github/v/release/thomorl/androidx-particles?style=flat-square)](https://github.com/thomorl/androidx-particles/releases)
 
-Leonids is a particle system library that works with the standard Android UI.
+This library is a fork of [Leonids](https://github.com/plattysoft/Leonids), a lightweight particle system library that works with the standard Android UI.
 
-The library is extremely lightweight, [LeonidsLib.jar](https://github.com/plattysoft/Leonids/releases/download/1.3.1/LeonidsLib.jar) is just 81Kb.
-
-You can download [Leonids Demo from Google Play](https://play.google.com/store/apps/details?id=com.plattysoft.leonids.examples) to check out what can be done with it.
+You can download the [Leonids Demo from Google Play](https://play.google.com/store/apps/details?id=com.plattysoft.leonids.examples) to check out what can be done with it.
 
 ## Setup
 
-Leonids is available in jcenter as well as a jar file to fit both Android Studio and Eclipse.
+AndroidX Particles is available from JCenter.
 
-### Android Studio / gradle
+### Android Studio / Gradle
 
-Add the following dependency to the build.gradle of your project
+Add the following dependency to the build.gradle of your project:
 ```
 dependencies {
-    compile 'com.plattysoft.leonids:LeonidsLib:1.3.1'
+    implementation 'androidx.particles:particles:1.3.3'
 }
 ```
-Note: If you get an error, you may need to update the jcenter repository to:
+Note: If you get an error, you may need to include the JCenter repository:
 ```
 repositories {
-    jcenter{
-        url "http://jcenter.bintray.com/"
-    }
+    jcenter()
 }
 ````
 
-### Eclipse / jar file
-
-Just put [LeonidsLib.jar](https://github.com/plattysoft/Leonids/releases/download/1.3.1/LeonidsLib.jar) into the libs folder of your app.
-
 ## Why this library?
 
-Particle systems are often used in games for a wide range of purposes: Explosions, fire, smoke, etc. This effects can also be used on normal apps to add an element of "juiciness" or Playful Design.
+Particle systems are often used in games for a wide range of purposes: Explosions, fire, smoke, …  
+These effects can also be used in non-game apps to add an element of "juiciness" or playful design.
 
-Precisely because its main use is games, all engines have support for particle systems, but there is no such thing for standard Android UI.
+Precisely because its main use is games, all engines have support for particle systems, but there is no such thing available for the standard Android UI.
 
-This means that if you are building an Android app and you want a particle system, you have to include a graphics engine and use OpenGL -which is quite an overkill- or you have to implement it yourself.
+This means that if you are building an Android app and want a particle system, you have to include a graphics engine and use OpenGL — which is quite the overkill — or you have to implement it yourself.
 
-Leonids is made to fill this gap, bringing particle sytems to developers that use the standard Android UI.
+AndroidX Particles is made to fill this gap, bringing particle sytems to developers that use the standard Android UI.
 
-## Basic usage
+## Basic Usage
 
-Creating and firing a one-shot particle system is very easy, just 3 lines of code.
+Creating and firing a one-shot particle system is very easy, requiring just 3 lines of code.
 
 ```java
 new ParticleSystem(this, numParticles, drawableResId, timeToLive)
@@ -52,20 +46,20 @@ new ParticleSystem(this, numParticles, drawableResId, timeToLive)
 .oneShot(anchorView, numParticles);
 ```
 
-Note that the ParticleSystem checks the position of the anchor view when oneShot (or emit) is called, so it requires the views to be measured. This means that **ParticleSystem won't work properly if you call oneShot or emit during onCreate**. For more information check the comments on [issue #22](https://github.com/plattysoft/Leonids/issues/22).
+Note that the particle system checks the position of the anchor view when `oneShot()` (or `emit()`) is called, so it requires the views to be measured. This means that **the particle system won't work properly if you call `oneShot()` or `emit()` during onCreate or onStart**. For more information, check the [FAQ](https://github.com/thomorl/androidx-particles/wiki/FAQ#my-particles-are-always-shown-in-the-top-left-corner-what-is-going-on).
 
-When you create the particle system, you tell how many particles will it use as a maximum, the resourceId of the drawable you want to use for the particles and for how long the particles will live.
+When you create the particle system, you specify how many particles it will use at maximum, the resourceId or the drawable you want to use for the particles, and how long the particles will live.
 
-Then you configure the particle system. In this case we specify that the particles will have a speed between 0.2 and 0.5 pixels per milisecond (support for dips will be included in the future). Since we did not provide an angle range, it will be considered as "any angle".
+Then you configure the particle system. In this case, we specify that the particles will have a speed between `0.2` and `0.5` pixels per millisecond (support for _dp_ will be included in the future). Since we did not provide an angle range, it will be considered as "any angle" (0° – 360°).
 
-Finally, we call oneShot, passing the view from which the particles will be launched and saying how many particles we want to be shot.
+Finally, we call `oneShot()`, passing the view from which the particles will be launched and saying how many particles we want to be shot.
 
-![](https://raw.githubusercontent.com/plattysoft/Leonids/master/images/Leonids_one_shot.gif)
+![Leonids fireworks demo](docs/images/leonids_one_shot.gif)
 
 ## Emitters
 
-You can configure emitters, which have a constant ratio of particles being emited per second.
-This is the code for the Confeti example:
+You can configure emitters, which have a constant ratio of particles being emitted per second.
+This is the code for the confetti example:
 
 ```java
 new ParticleSystem(this, 80, R.drawable.confeti2, 10000)
@@ -81,90 +75,24 @@ new ParticleSystem(this, 80, R.drawable.confeti3, 10000)
 .emit(findViewById(R.id.emiter_top_left), 8);
 ```
 
-It uses an initializer for the Speed as module and angle ranges, a fixed speed rotaion and extenal acceleration.
+It uses an initializer for the speed as module and angle ranges, a fixed speed rotation and external acceleration.
 
-![](https://raw.githubusercontent.com/plattysoft/Leonids/master/images/leonids_confeti.gif)
+![Leonids confetti demo](docs/images/leonids_confetti.gif)
 
-## Available Methods
+## Documentation
 
-List of the methods available on the class ParticleSystem.
+Use the [Cheat Sheet](https://github.com/thomorl/androidx-particles/wiki/Cheat-Sheet) or [FAQ](https://github.com/thomorl/androidx-particles/wiki/FAQ) pages in the [Wiki](https://github.com/thomorl/androidx-particles/wiki) to get a quick overview.
 
-### Constructors
+For a more detailed documentation, see the [Reference](#not-implemented).
 
-All constructors use the activity, the maximum number of particles and the time to live. The difference is in how the image for the particles is specified. 
+## Other Details
 
-Supported drawables are: BitmapDrawable and AnimationDrawable.
+AndroidX Particles requires minSDK 14 / Android 4.0 (Ice Cream Sandwich).
 
-* _ParticleSystem(Activity a, int maxParticles, int drawableRedId, long timeToLive)_
-* _ParticleSystem(Activity a, int maxParticles, Drawable drawable, long timeToLive)_
-* _ParticleSystem(Activity a, int maxParticles, Bitmap bitmap, long timeToLive)_
-* _ParticleSystem(Activity a, int maxParticles, AnimationDrawable animation, long timeToLive)_
+The library is open-source software, you can use it, extended with no requirement to open-source your changes. You can also make paid apps using it.
 
-There are also constructors that recieve a view id to use as the parent so you can put the particle system on the background (or between any two views)
+Each particle system only uses one image for the particles. If you want different particles to be emitted, you need to create a particle system for each of them.
 
-* _ParticleSystem(Activity a, int maxParticles, int drawableRedId, long timeToLive, int parentViewId)_
-* _ParticleSystem(Activity a, int maxParticles, Drawable drawable, long timeToLive, int parentViewId)_
-* _ParticleSystem(Activity a, int maxParticles, Bitmap bitmap, long timeToLive, int parentViewId)_
-* _ParticleSystem(Activity a, int maxParticles, AnimationDrawable animation, long timeToLive, int parentViewId)_
+## Acknowledgements
 
-### Configuration
-
-Available methods on the Particle system for configuration are:
-
-* _setSpeedRange(float speedMin, float speedMax)_: Uses 0-360 as the angle range
-* _setSpeedModuleAndAngleRange(float speedMin, float speedMax, int minAngle, int maxAngle)_
-* _setSpeedByComponentsRange(float speedMinX, float speedMaxX, float speedMinY, float speedMaxY)_
-* _setInitialRotationRange (int minAngle, int maxAngle)_
-* _setScaleRange(float minScale, float maxScale)_
-* _setRotationSpeed(float rotationSpeed)_
-* _setRotationSpeedRange(float minRotationSpeed, float maxRotationSpeed)_
-* _setAcceleration(float acceleration, float angle)_
-* _setFadeOut(long milisecondsBeforeEnd, Interpolator interpolator)_: Utility method for a simple fade out effect using an interpolator
-* _setFadeOut(long duration)_:Utility method for a simple fade out
-
-You can start the particle system "in the future" if you want to have the particles already created and moving using
-
-_setStartTime(int time)_
-
-For more complex modifiers, you can use the method _addModifier(ParticleModifier modifier)_. Available modifiers are:
-
-* _AlphaModifier (int initialValue, int finalValue, long startMilis, long endMilis)_
-* _AlphaModifier (int initialValue, int finalValue, long startMilis, long endMilis, Interpolator interpolator)_
-* _ScaleModifier (float initialValue, float finalValue, long startMilis, long endMilis)_
-* _ScaleModifier (float initialValue, float finalValue, long startMilis, long endMilis, Interpolator interpolator)_
-
-### One shot
-
-Make one shot using from the anchor view using the number of particles specified, an interpolator is optional
-
-* _oneShot(View anchor, int numParticles)_
-* _oneShot(View anchor, int numParticles, Interpolator interpolator)_
-
-### Emitters
-
-Emits the number of particles per second from the emitter. If emittingTime is set, the emitter stops after that time, otherwise it is continuous.
-
-####Basic emitters
-* _emit (View emitter, int particlesPerSecond)_
-* _emit (View emitter, int particlesPerSecond, int emittingTime)_
-
-####Emit based on (x,y) coordinates
-* _emit (int emitterX, int emitterY, int particlesPerSecond)_
-* _emit (int emitterX, int emitterY, int particlesPerSecond, int emitingTime)_
-
-####Emit with Gravity 
-* _emitWithGravity (View emiter, int gravity, int particlesPerSecond)_
-* _emitWithGravity (View emiter, int gravity, int particlesPerSecond, int emitingTime)_
- 
-####Update, stop, and cancel
-* _updateEmitPoint (int emitterX, int emitterY)_ Updates dynamically the point of emission.
-* _stopEmitting ()_ Stops the emission of new particles, but the active ones are updated.
-* _cancel ()_ Stops the emission of new particles and cancles the active ones.
-
-## Other details
-
-Leonids requires minSDK 11 because it uses ValueAnimators. It should be very easy, however to use nineoldandroids and make it work on Gingerbread.
-
-The library is Free Software, you can use it, extended with no requirement to open source your changes. You can also make paid apps using it.
-
-Each Particle System only uses one image for the particles. If you want different particles to be emitted, you need to create a Particle System for each one of them.
+Leonids was created by Raul Portales ([@plattysoft](https://github.com/plattysoft)).
