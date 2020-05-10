@@ -1,0 +1,8 @@
+title: Leonids
+description: A Particle System for standard Android UI
+google_analytics: UA-28165246-2
+show_downloads: true
+theme: jekyll-theme-slate
+
+gems:
+  - jekyll-mentions
