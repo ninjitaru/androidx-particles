@@ -206,6 +206,21 @@ public class ParticleSystem {
     }
 
 	/**
+	 * Utility constructor that receives an array of Bitmaps.
+	 *
+	 * @param parentView The parent view group.
+	 * @param maxParticles The maximum number of particles.
+	 * @param bitmaps An array of bitmaps, which will be randomly assigned to particles.
+	 * @param timeToLive The time to live for the particles.
+	 */
+	public ParticleSystem(ViewGroup parentView, int maxParticles, Bitmap[] bitmaps, long timeToLive) {
+		this(parentView, maxParticles, timeToLive);
+		for (int i=0; i<mMaxParticles; i++) {
+			mParticles.add (new Particle (bitmaps[mRandom.nextInt(bitmaps.length)]));
+		}
+	}
+
+	/**
 	 * Utility constructor that receives a Bitmap.
 	 *
 	 * @param a The parent activity.
@@ -222,13 +237,13 @@ public class ParticleSystem {
 	}
 
 	/**
-	 * Utility constructor that receives an array of Bitmaps
+	 * Utility constructor that receives an array of Bitmaps.
 	 *
-	 * @param a The parent activity
-	 * @param maxParticles The maximum number of particles
-	 * @param bitmaps An array of bitmaps which will be randomly assigned to particles
-	 * @param timeToLive The time to live for the particles
-	 * @param parentViewId The view Id for the parent of the particle system
+	 * @param a The parent activity.
+	 * @param maxParticles The maximum number of particles.
+	 * @param bitmaps An array of bitmaps, which will be randomly assigned to particles.
+	 * @param timeToLive The time to live for the particles.
+	 * @param parentViewId The view Id for the parent of the particle system.
 	 */
 	public ParticleSystem(Activity a, int maxParticles, Bitmap[] bitmaps, long timeToLive, int parentViewId) {
 		this((ViewGroup) a.findViewById(parentViewId), maxParticles, timeToLive);
@@ -237,20 +252,7 @@ public class ParticleSystem {
 		}
 	}
 
-	/**
-	 * Utility constructor that receives an array of Bitmaps
-	 *
-	 * @param parentView The parent view group
-	 * @param maxParticles The maximum number of particles
-	 * @param bitmaps An array of bitmaps which will be randomly assigned to particles
-	 * @param timeToLive The time to live for the particles
-	 */
-	public ParticleSystem(ViewGroup parentView, int maxParticles, Bitmap[] bitmaps, long timeToLive) {
-		this(parentView, maxParticles, timeToLive);
-		for (int i=0; i<mMaxParticles; i++) {
-			mParticles.add (new Particle (bitmaps[mRandom.nextInt(bitmaps.length)]));
-		}
-	}
+	// TODO Create more, flexible bitmap array constructors
 
     /**
      * Utility constructor that receives an AnimationDrawable.
