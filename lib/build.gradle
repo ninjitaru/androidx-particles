@@ -1,0 +1,56 @@
+apply plugin: 'com.android.library'
+
+group = 'androidx.particles'
+version = '1.3.3'
+
+description = 'A particle system library for standard Android UI.'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 29
+
+        versionCode 6
+        versionName project.version
+    }
+
+    buildTypes {
+    }
+}
+
+task javadoc(type: Javadoc) {
+    group = 'documentation'
+    description = 'Generate Javadoc'
+
+    source = android.sourceSets.main.java.srcDirs
+    classpath = project.files(android.getBootClasspath().join(File.pathSeparator))
+    project.logger.lifecycle(classpath.getFiles().toString())
+
+    options {
+        charSet = 'UTF-8'
+        encoding = 'UTF-8'
+        docEncoding = 'UTF-8'
+
+        linksOffline 'http://developer.android.com/reference/', "${android.sdkDirectory}/docs/reference"
+    }
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    from javadoc.destinationDir
+    archiveClassifier = 'javadoc'
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    archiveClassifier = 'sources'
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+apply from: 'publish.gradle'
