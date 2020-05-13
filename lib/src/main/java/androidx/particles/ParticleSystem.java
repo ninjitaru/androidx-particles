@@ -22,7 +22,7 @@ import androidx.particles.initializers.ParticleInitializer;
 import androidx.particles.initializers.RotationInitializer;
 import androidx.particles.initializers.RotationSpeedInitializer;
 import androidx.particles.initializers.ScaleInitializer;
-import androidx.particles.initializers.SpeeddByComponentsInitializer;
+import androidx.particles.initializers.SpeedByComponentsInitializer;
 import androidx.particles.initializers.SpeedModuleAndRangeInitializer;
 import androidx.particles.modifiers.AlphaModifier;
 import androidx.particles.modifiers.ParticleModifier;
@@ -143,11 +143,11 @@ public class ParticleSystem {
 	 *
 	 * @param a The parent activity.
 	 * @param maxParticles The maximum number of particles.
-	 * @param drawableRedId The drawable resource to use as particle (supports Bitmaps and Animations).
+	 * @param drawableResId The drawable resource to use as particle (supports Bitmaps and Animations).
 	 * @param timeToLive The time to live for the particles.
 	 */
-	public ParticleSystem(Activity a, int maxParticles, int drawableRedId, long timeToLive) {
-		this(a, maxParticles, a.getResources().getDrawable(drawableRedId), timeToLive, android.R.id.content);
+	public ParticleSystem(Activity a, int maxParticles, int drawableResId, long timeToLive) {
+		this(a, maxParticles, a.getResources().getDrawable(drawableResId), timeToLive, android.R.id.content);
 	}
 
     /**
@@ -155,12 +155,12 @@ public class ParticleSystem {
      *
      * @param a The parent activity.
      * @param maxParticles The maximum number of particles.
-     * @param drawableRedId The drawable resource to use as particle (supports Bitmaps and Animations).
+     * @param drawableResId The drawable resource to use as particle (supports Bitmaps and Animations).
      * @param timeToLive The time to live for the particles.
      * @param parentViewId The view Id for the parent of the particle system.
      */
-    public ParticleSystem(Activity a, int maxParticles, int drawableRedId, long timeToLive, int parentViewId) {
-        this(a, maxParticles, a.getResources().getDrawable(drawableRedId), timeToLive, parentViewId);
+    public ParticleSystem(Activity a, int maxParticles, int drawableResId, long timeToLive, int parentViewId) {
+        this(a, maxParticles, a.getResources().getDrawable(drawableResId), timeToLive, parentViewId);
     }
 
     /**
@@ -351,7 +351,7 @@ public class ParticleSystem {
      * @return This.
      */
 	public ParticleSystem setSpeedByComponentsRange(float speedMinX, float speedMaxX, float speedMinY, float speedMaxY) {
-        mInitializers.add(new SpeeddByComponentsInitializer(dpToPx(speedMinX), dpToPx(speedMaxX),
+        mInitializers.add(new SpeedByComponentsInitializer(dpToPx(speedMinX), dpToPx(speedMaxX),
 				dpToPx(speedMinY), dpToPx(speedMaxY)));
 		return this;
 	}
@@ -419,7 +419,7 @@ public class ParticleSystem {
      * @param maxAngle The maximum acceleration angle.
      * @return This.
      */
-	public ParticleSystem setAccelerationModuleAndAndAngleRange(float minAcceleration, float maxAcceleration, int minAngle, int maxAngle) {
+	public ParticleSystem setAccelerationModuleAndAngleRange(float minAcceleration, float maxAcceleration, int minAngle, int maxAngle) {
         mInitializers.add(new AccelerationInitializer(dpToPx(minAcceleration), dpToPx(maxAcceleration),
 				minAngle, maxAngle));
 		return this;
@@ -485,12 +485,12 @@ public class ParticleSystem {
 	/**
 	 * Configures a fade-out for the particles when they disappear.
 	 *
-	 * @param milisecondsBeforeEnd Fade-out duration in milliseconds.
+	 * @param millisecondsBeforeEnd Fade-out duration in milliseconds.
 	 * @param interpolator The interpolator for the fade-out (default is linear).
 	 * @return This.
 	 */
-	public ParticleSystem setFadeOut(long milisecondsBeforeEnd, Interpolator interpolator) {
-		mModifiers.add(new AlphaModifier(255, 0, mTimeToLive-milisecondsBeforeEnd, mTimeToLive, interpolator));
+	public ParticleSystem setFadeOut(long millisecondsBeforeEnd, Interpolator interpolator) {
+		mModifiers.add(new AlphaModifier(255, 0, mTimeToLive-millisecondsBeforeEnd, mTimeToLive, interpolator));
 		return this;
 	}
 
@@ -682,8 +682,8 @@ public class ParticleSystem {
 		mAnimator.addUpdateListener(new AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                int miliseconds = (Integer) animation.getAnimatedValue();
-                onUpdate(miliseconds);
+                int milliseconds = (Integer) animation.getAnimatedValue();
+                onUpdate(milliseconds);
             }
         });
 		mAnimator.addListener(new AnimatorListener() {
@@ -782,16 +782,16 @@ public class ParticleSystem {
 		}
 	}
 
-	private void onUpdate(long miliseconds) {
-		while (((mEmittingTime > 0 && miliseconds < mEmittingTime)|| mEmittingTime == -1) && // This point should emit
+	private void onUpdate(long milliseconds) {
+		while (((mEmittingTime > 0 && milliseconds < mEmittingTime)|| mEmittingTime == -1) && // This point should emit
 				!mParticles.isEmpty() && // We have particles in the pool
-				mActivatedParticles < mParticlesPerMillisecond *miliseconds) { // and we are under the number of particles that should be launched
+				mActivatedParticles < mParticlesPerMillisecond * milliseconds) { // and we are under the number of particles that should be launched
 			// Activate a new particle
-			activateParticle(miliseconds);
+			activateParticle(milliseconds);
 		}
 		synchronized(mActiveParticles) {
 			for (int i = 0; i < mActiveParticles.size(); i++) {
-				boolean active = mActiveParticles.get(i).update(miliseconds);
+				boolean active = mActiveParticles.get(i).update(milliseconds);
 				if (!active) {
 					Particle p = mActiveParticles.remove(i);
 					i--; // Needed to keep the index at the right position

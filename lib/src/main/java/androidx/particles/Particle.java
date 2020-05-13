@@ -39,7 +39,7 @@ public class Particle {
 
 	private long mTimeToLive;
 
-	protected long mStartingMilisecond;
+	protected long mStartingMillisecond;
 
 	private int mBitmapHalfWidth;
 	private int mBitmapHalfHeight;
@@ -62,28 +62,28 @@ public class Particle {
 		mAlpha = 255;	
 	}
 	
-	public void configure(long timeToLive, float emiterX, float emiterY) {
+	public void configure(long timeToLive, float emitterX, float emitterY) {
 		mBitmapHalfWidth = mImage.getWidth()/2;
 		mBitmapHalfHeight = mImage.getHeight()/2;
 		
-		mInitialX = emiterX - mBitmapHalfWidth;
-		mInitialY = emiterY - mBitmapHalfHeight;
+		mInitialX = emitterX - mBitmapHalfWidth;
+		mInitialY = emitterY - mBitmapHalfHeight;
 		mCurrentX = mInitialX;
 		mCurrentY = mInitialY;
 		
 		mTimeToLive = timeToLive;
 	}
 
-	public boolean update(long miliseconds) {
-		long realMiliseconds = miliseconds - mStartingMilisecond;
-		if (realMiliseconds > mTimeToLive) {
+	public boolean update(long milliseconds) {
+		long realMilliseconds = milliseconds - mStartingMillisecond;
+		if (realMilliseconds > mTimeToLive) {
 			return false;
 		}
-		mCurrentX = mInitialX+mSpeedX*realMiliseconds+mAccelerationX*realMiliseconds*realMiliseconds;
-		mCurrentY = mInitialY+mSpeedY*realMiliseconds+mAccelerationY*realMiliseconds*realMiliseconds;
-		mRotation = mInitialRotation + mRotationSpeed*realMiliseconds/1000;
+		mCurrentX = mInitialX+mSpeedX*realMilliseconds+mAccelerationX*realMilliseconds*realMilliseconds;
+		mCurrentY = mInitialY+mSpeedY*realMilliseconds+mAccelerationY*realMilliseconds*realMilliseconds;
+		mRotation = mInitialRotation + mRotationSpeed*realMilliseconds/1000;
 		for (int i=0; i<mModifiers.size(); i++) {
-			mModifiers.get(i).apply(this, realMiliseconds);
+			mModifiers.get(i).apply(this, realMilliseconds);
 		}
 		return true;
 	}
@@ -97,8 +97,8 @@ public class Particle {
 		c.drawBitmap(mImage, mMatrix, mPaint);
 	}
 
-	public Particle activate(long startingMilisecond, List<ParticleModifier> modifiers) {
-		mStartingMilisecond = startingMilisecond;
+	public Particle activate(long startingMillisecond, List<ParticleModifier> modifiers) {
+		mStartingMillisecond = startingMillisecond;
 		// We do store a reference to the list, there is no need to copy, since the modifiers do not carte about states 
 		mModifiers = modifiers;
 		return this;
