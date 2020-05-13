@@ -10,6 +10,7 @@ import android.graphics.Canvas;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
@@ -147,7 +148,13 @@ public class ParticleSystem {
 	 * @param timeToLive The time to live for the particles.
 	 */
 	public ParticleSystem(Activity a, int maxParticles, int drawableResId, long timeToLive) {
-		this(a, maxParticles, a.getResources().getDrawable(drawableResId), timeToLive, android.R.id.content);
+		this(
+				a, maxParticles,
+				Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
+						? a.getDrawable(drawableResId)
+						: a.getResources().getDrawable(drawableResId),
+				timeToLive, android.R.id.content
+		);
 	}
 
     /**
@@ -160,7 +167,13 @@ public class ParticleSystem {
      * @param parentViewId The view Id for the parent of the particle system.
      */
     public ParticleSystem(Activity a, int maxParticles, int drawableResId, long timeToLive, int parentViewId) {
-        this(a, maxParticles, a.getResources().getDrawable(drawableResId), timeToLive, parentViewId);
+        this(
+        		a, maxParticles,
+				Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
+						? a.getDrawable(drawableResId)
+						: a.getResources().getDrawable(drawableResId),
+				timeToLive, parentViewId
+		);
     }
 
     /**
