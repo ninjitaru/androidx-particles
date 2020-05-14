@@ -54,3 +54,4 @@ artifacts {
 }
 
 apply from: 'publish.gradle'
+apply from: 'license.gradle'
