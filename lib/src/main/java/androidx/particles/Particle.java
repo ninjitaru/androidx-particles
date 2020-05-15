@@ -18,6 +18,7 @@ package androidx.particles;
 
 import java.util.List;
 
+import androidx.annotation.Px;
 import androidx.particles.modifiers.ParticleModifier;
 
 import android.graphics.Bitmap;
@@ -29,7 +30,9 @@ public class Particle {
 
 	protected Bitmap mImage;
 	
+	@Px
 	public float mCurrentX;
+	@Px
 	public float mCurrentY;
 	
 	public float mScale = 1f;
@@ -48,7 +51,9 @@ public class Particle {
 	private Matrix mMatrix;
 	private Paint mPaint;
 
+	@Px
 	private float mInitialX;
+	@Px
 	private float mInitialY;
 
 	private float mRotation;
@@ -57,7 +62,9 @@ public class Particle {
 
 	protected long mStartingMillisecond;
 
+	@Px
 	private int mBitmapHalfWidth;
+	@Px
 	private int mBitmapHalfHeight;
 
 	private List<ParticleModifier> mModifiers;
@@ -78,7 +85,7 @@ public class Particle {
 		mAlpha = 255;	
 	}
 	
-	public void configure(long timeToLive, float emitterX, float emitterY) {
+	public void configure(long timeToLive, @Px float emitterX, @Px float emitterY) {
 		mBitmapHalfWidth = mImage.getWidth()/2;
 		mBitmapHalfHeight = mImage.getHeight()/2;
 		

@@ -36,6 +36,7 @@ import android.view.animation.LinearInterpolator;
 
 import androidx.annotation.DrawableRes;
 import androidx.annotation.IdRes;
+import androidx.annotation.Px;
 import androidx.particles.initializers.AccelerationInitializer;
 import androidx.particles.initializers.ParticleInitializer;
 import androidx.particles.initializers.RotationInitializer;
@@ -80,9 +81,13 @@ public class ParticleSystem {
 	private float mDpToPxScale;
 	private int[] mParentLocation;
 
+	@Px
 	private int mEmitterXMin;
+	@Px
 	private int mEmitterXMax;
+	@Px
 	private int mEmitterYMin;
+	@Px
 	private int mEmitterYMax;
 
     private static class ParticleTimerTask extends TimerTask {
@@ -341,7 +346,8 @@ public class ParticleSystem {
 	}
 
     /**
-     * Initializes the speed range of emitted particles.
+     * Initializes the speed range of emitted particles. Speeds are
+	 * measured in density pixels (<i>dp</i>) per millisecond.
      * Uses {@code 0} − {@code 360} as the angle range.
      *
      * @param speedMin The minimum speed to emit particles.
@@ -359,7 +365,7 @@ public class ParticleSystem {
      * Initializes the speed range and angle range of emitted particles. Angles are in degrees
      * and non negative:
      * 0 meaning to the right, 90 to the bottom,... in clockwise orientation. Speed is non
-	 * negative and is described in pixels per millisecond.
+	 * negative and is described in density pixels (<i>dp</i>) per millisecond.
 	 *
      * @param speedMin The minimum speed to emit particles.
      * @param speedMax The maximum speed to emit particles.
@@ -379,7 +385,7 @@ public class ParticleSystem {
 
     /**
      * Initializes the speed components ranges that particles will be emitted. Speeds are
-     * measured in density pixels per millisecond.
+     * measured in density pixels (<i>dp</i>) per millisecond.
 	 *
      * @param speedMinX The minimum speed in x direction.
      * @param speedMaxX The maximum speed in x direction.
@@ -617,12 +623,12 @@ public class ParticleSystem {
 	 * @param particlesPerSecond Number of particles per second that will be emitted (evenly distributed).
 	 * @param emittingTime Time the emitter will be emitting particles.
 	 */
-	public void emit(int emitterX, int emitterY, int particlesPerSecond, int emittingTime) {
+	public void emit(@Px int emitterX, @Px int emitterY, int particlesPerSecond, int emittingTime) {
 		configureEmitter(emitterX, emitterY);
 		startEmitting(particlesPerSecond, emittingTime);
 	}
 
-	private void configureEmitter(int emitterX, int emitterY) {
+	private void configureEmitter(@Px int emitterX, @Px int emitterY) {
 		// We configure the emitter based on the window location to fix the offset of action bar if present
 		mEmitterXMin = emitterX - mParentLocation[0];
 		mEmitterXMax = mEmitterXMin;
@@ -652,7 +658,7 @@ public class ParticleSystem {
 	 * @param emitterY The y coordinate where the particles will be emitted.
 	 * @param particlesPerSecond Number of particles per second that will be emitted (evenly distributed).
 	 */
-	public void emit(int emitterX, int emitterY, int particlesPerSecond) {
+	public void emit(@Px int emitterX, @Px int emitterY, int particlesPerSecond) {
 		configureEmitter(emitterX, emitterY);
 		startEmitting(particlesPerSecond);
 	}
@@ -663,7 +669,7 @@ public class ParticleSystem {
 	 * @param emitterX The new x coordinate where the particles will be emitted.
 	 * @param emitterY The new y coordinate where the particles will be emitted.
 	 */
-	public void updateEmitPoint(int emitterX, int emitterY) {
+	public void updateEmitPoint(@Px int emitterX, @Px int emitterY) {
 		configureEmitter(emitterX, emitterY);
 	}
 
