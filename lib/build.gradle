@@ -21,6 +21,10 @@ android {
     }
 }
 
+dependencies {
+    implementation 'androidx.annotation:annotation:1.1.0'
+}
+
 task javadoc(type: Javadoc) {
     group = 'documentation'
     description = 'Generate Javadoc'

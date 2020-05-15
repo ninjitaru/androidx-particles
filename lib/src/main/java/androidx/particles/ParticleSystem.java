@@ -34,6 +34,8 @@ import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 
+import androidx.annotation.DrawableRes;
+import androidx.annotation.IdRes;
 import androidx.particles.initializers.AccelerationInitializer;
 import androidx.particles.initializers.ParticleInitializer;
 import androidx.particles.initializers.RotationInitializer;
@@ -163,7 +165,8 @@ public class ParticleSystem {
 	 * @param drawableResId The drawable resource to use as particle (supports Bitmaps and Animations).
 	 * @param timeToLive The time to live for the particles.
 	 */
-	public ParticleSystem(Activity a, int maxParticles, int drawableResId, long timeToLive) {
+	public ParticleSystem(Activity a, int maxParticles, @DrawableRes int drawableResId,
+						  long timeToLive) {
 		this(
 				a, maxParticles,
 				Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
@@ -182,7 +185,8 @@ public class ParticleSystem {
      * @param timeToLive The time to live for the particles.
      * @param parentViewId The view Id for the parent of the particle system.
      */
-    public ParticleSystem(Activity a, int maxParticles, int drawableResId, long timeToLive, int parentViewId) {
+    public ParticleSystem(Activity a, int maxParticles, @DrawableRes int drawableResId,
+						  long timeToLive, @IdRes int parentViewId) {
         this(
         		a, maxParticles,
 				Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
@@ -213,7 +217,8 @@ public class ParticleSystem {
 	 * @param timeToLive The time to live for the particles.
      * @param parentViewId The view Id for the parent of the particle system.
 	 */
-	public ParticleSystem(Activity a, int maxParticles, Drawable drawable, long timeToLive, int parentViewId) {
+	public ParticleSystem(Activity a, int maxParticles, Drawable drawable, long timeToLive,
+						  @IdRes int parentViewId) {
 		this((ViewGroup) a.findViewById(parentViewId), maxParticles, drawable, timeToLive);
 	}
 
@@ -258,7 +263,8 @@ public class ParticleSystem {
 	 * @param timeToLive The time to live for the particles.
      * @param parentViewId The view Id for the parent of the particle system.
 	 */
-	public ParticleSystem(Activity a, int maxParticles, Bitmap bitmap, long timeToLive, int parentViewId) {
+	public ParticleSystem(Activity a, int maxParticles, Bitmap bitmap, long timeToLive,
+						  @IdRes int parentViewId) {
 		this((ViewGroup) a.findViewById(parentViewId), maxParticles, timeToLive);
 		for (int i=0; i<mMaxParticles; i++) {
 			mParticles.add (new Particle (bitmap));
@@ -274,7 +280,8 @@ public class ParticleSystem {
 	 * @param timeToLive The time to live for the particles.
 	 * @param parentViewId The view Id for the parent of the particle system.
 	 */
-	public ParticleSystem(Activity a, int maxParticles, Bitmap[] bitmaps, long timeToLive, int parentViewId) {
+	public ParticleSystem(Activity a, int maxParticles, Bitmap[] bitmaps, long timeToLive,
+						  @IdRes int parentViewId) {
 		this((ViewGroup) a.findViewById(parentViewId), maxParticles, timeToLive);
 		for (int i=0; i<mMaxParticles; i++) {
 			mParticles.add (new Particle (bitmaps[mRandom.nextInt(bitmaps.length)]));
@@ -304,7 +311,8 @@ public class ParticleSystem {
 	 * @param timeToLive The time to live for the particles.
      * @param parentViewId The view Id for the parent of the particle system.
 	 */
-	public ParticleSystem(Activity a, int maxParticles, AnimationDrawable animation, long timeToLive, int parentViewId) {
+	public ParticleSystem(Activity a, int maxParticles, AnimationDrawable animation, long timeToLive,
+						  @IdRes int parentViewId) {
 		this((ViewGroup) a.findViewById(parentViewId), maxParticles, timeToLive);
 		// Create the particles
 		for (int i=0; i<mMaxParticles; i++) {
