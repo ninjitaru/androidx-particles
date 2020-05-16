@@ -16,6 +16,7 @@
  */
 package androidx.particles.initializers;
 
+import androidx.annotation.IntRange;
 import androidx.particles.Particle;
 
 import java.util.Random;
@@ -27,7 +28,9 @@ public class SpeedModuleAndRangeInitializer implements ParticleInitializer {
 	private int mMinAngle;
 	private int mMaxAngle;
 
-	public SpeedModuleAndRangeInitializer(float speedMin, float speedMax, int minAngle, int maxAngle) {
+	public SpeedModuleAndRangeInitializer(float speedMin, float speedMax,
+										  @IntRange(from=0, to=360) int minAngle,
+										  @IntRange(from=0, to=360) int maxAngle) {
 		mSpeedMin = speedMin;
 		mSpeedMax = speedMax;
 		mMinAngle = minAngle;

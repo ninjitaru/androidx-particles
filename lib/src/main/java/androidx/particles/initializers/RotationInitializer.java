@@ -16,6 +16,7 @@
  */
 package androidx.particles.initializers;
 
+import androidx.annotation.IntRange;
 import androidx.particles.Particle;
 
 import java.util.Random;
@@ -25,7 +26,8 @@ public class RotationInitializer implements ParticleInitializer {
 	private int mMinAngle;
 	private int mMaxAngle;
 
-	public RotationInitializer(int minAngle, int maxAngle) {
+	public RotationInitializer(@IntRange(from=0, to=360) int minAngle,
+							   @IntRange(from=0, to=360) int maxAngle) {
 		mMinAngle = minAngle;
 		mMaxAngle = maxAngle;
 	}

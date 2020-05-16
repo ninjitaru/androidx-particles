@@ -36,6 +36,7 @@ import android.view.animation.LinearInterpolator;
 
 import androidx.annotation.DrawableRes;
 import androidx.annotation.IdRes;
+import androidx.annotation.IntRange;
 import androidx.annotation.Px;
 import androidx.particles.initializers.AccelerationInitializer;
 import androidx.particles.initializers.ParticleInitializer;
@@ -373,7 +374,9 @@ public class ParticleSystem {
      * @param maxAngle The maximum angle to emit particles in degrees.
      * @return This.
      */
-	public ParticleSystem setSpeedModuleAndAngleRange(float speedMin, float speedMax, int minAngle, int maxAngle) {
+	public ParticleSystem setSpeedModuleAndAngleRange(float speedMin, float speedMax,
+													  @IntRange(from=0, to=360) int minAngle,
+													  @IntRange(from=0, to=360) int maxAngle) {
         // else emitting from top (270°) to bottom (90°) range would not be possible if someone
         // entered minAngle = 270 and maxAngle=90 since the module would swap the values
         while (maxAngle < minAngle) {
@@ -407,7 +410,8 @@ public class ParticleSystem {
      * @param maxAngle The maximum tilt angle.
      * @return This.
      */
-	public ParticleSystem setInitialRotationRange(int minAngle, int maxAngle) {
+	public ParticleSystem setInitialRotationRange(@IntRange(from=0, to=360) int minAngle,
+												  @IntRange(from=0, to=360) int maxAngle) {
 		mInitializers.add(new RotationInitializer(minAngle, maxAngle));
 		return this;
 	}
@@ -462,7 +466,10 @@ public class ParticleSystem {
      * @param maxAngle The maximum acceleration angle.
      * @return This.
      */
-	public ParticleSystem setAccelerationModuleAndAngleRange(float minAcceleration, float maxAcceleration, int minAngle, int maxAngle) {
+	public ParticleSystem setAccelerationModuleAndAngleRange(float minAcceleration,
+															 float maxAcceleration,
+															 @IntRange(from=0, to=360) int minAngle,
+															 @IntRange(from=0, to=360) int maxAngle) {
         mInitializers.add(new AccelerationInitializer(dpToPx(minAcceleration), dpToPx(maxAcceleration),
 				minAngle, maxAngle));
 		return this;
@@ -492,7 +499,7 @@ public class ParticleSystem {
      * @param angle The acceleration direction.
      * @return This.
      */
-	public ParticleSystem setAcceleration(float acceleration, int angle) {
+	public ParticleSystem setAcceleration(float acceleration, @IntRange(from=0, to=360) int angle) {
         mInitializers.add(new AccelerationInitializer(acceleration, acceleration, angle, angle));
 		return this;
 	}

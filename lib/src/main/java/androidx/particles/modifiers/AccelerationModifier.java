@@ -23,6 +23,7 @@ public class AccelerationModifier implements ParticleModifier {
 	private float mVelocityX;
 	private float mVelocityY;
 
+	// TODO Add documentation
 	public AccelerationModifier(float velocity, float angle) {
 		float velocityAngleInRads = (float) (angle*Math.PI/180f);
 		mVelocityX = (float) (velocity * Math.cos(velocityAngleInRads));
