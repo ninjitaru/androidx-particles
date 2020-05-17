@@ -34,6 +34,7 @@ import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 
+import androidx.annotation.Dimension;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.IdRes;
 import androidx.annotation.IntRange;
@@ -232,7 +233,8 @@ public class ParticleSystem {
 	}
 
 	// TODO Make private?
-	public float dpToPx(float dp) {
+	@Px
+	public float dpToPx(@Dimension(unit=Dimension.DP) float dp) {
 		return dp * mDpToPxScale;
 	}
 
