@@ -1,6 +1,7 @@
 AndroidX Particles
 ==========================
 [![GitHub release](https://img.shields.io/github/v/release/thomorl/androidx-particles?style=flat-square)](https://github.com/thomorl/androidx-particles/releases)
+[![Apache-2.0 license](https://img.shields.io/github/license/thomorl/androidx-particles?style=flat-square)](LICENSE)
 
 This library is a fork of [Leonids](https://github.com/plattysoft/Leonids), a lightweight particle system library that works with the standard Android UI.
 
@@ -23,7 +24,7 @@ Note: If you get an error, you may need to include the JCenter repository:
 repositories {
     jcenter()
 }
-````
+```
 
 ## Why this library?
 
@@ -42,8 +43,8 @@ Creating and firing a one-shot particle system is very easy, requiring just 3 li
 
 ```java
 new ParticleSystem(this, numParticles, drawableResId, timeToLive)
-.setSpeedRange(0.2f, 0.5f)
-.oneShot(anchorView, numParticles);
+        .setSpeedRange(0.2f, 0.5f)
+        .oneShot(anchorView, numParticles);
 ```
 
 Note that the particle system checks the position of the anchor view when `oneShot()` (or `emit()`) is called, so it requires the views to be measured. This means that **the particle system won't work properly if you call `oneShot()` or `emit()` during onCreate or onStart**. For more information, check the [FAQ](https://github.com/thomorl/androidx-particles/wiki/FAQ#my-particles-are-always-shown-in-the-top-left-corner-what-is-going-on).
@@ -63,16 +64,16 @@ This is the code for the confetti example:
 
 ```java
 new ParticleSystem(this, 80, R.drawable.confeti2, 10000)
-.setSpeedModuleAndAngleRange(0f, 0.3f, 180, 180)
-.setRotationSpeed(144)
-.setAcceleration(0.00005f, 90)
-.emit(findViewById(R.id.emiter_top_right), 8);
+        .setSpeedModuleAndAngleRange(0f, 0.3f, 180, 180)
+        .setRotationSpeed(144)
+        .setAcceleration(0.00005f, 90)
+        .emit(findViewById(R.id.emiter_top_right), 8);
 
 new ParticleSystem(this, 80, R.drawable.confeti3, 10000)
-.setSpeedModuleAndAngleRange(0f, 0.3f, 0, 0)
-.setRotationSpeed(144)
-.setAcceleration(0.00005f, 90)
-.emit(findViewById(R.id.emiter_top_left), 8);
+        .setSpeedModuleAndAngleRange(0f, 0.3f, 0, 0)
+        .setRotationSpeed(144)
+        .setAcceleration(0.00005f, 90)
+        .emit(findViewById(R.id.emiter_top_left), 8);
 ```
 
 It uses an initializer for the speed as module and angle ranges, a fixed speed rotation and external acceleration.
@@ -83,7 +84,7 @@ It uses an initializer for the speed as module and angle ranges, a fixed speed r
 
 Use the [Cheat Sheet](https://github.com/thomorl/androidx-particles/wiki/Cheat-Sheet) or [FAQ](https://github.com/thomorl/androidx-particles/wiki/FAQ) pages in the [Wiki](https://github.com/thomorl/androidx-particles/wiki) to get a quick overview.
 
-For a more detailed documentation, see the [Reference](#not-implemented).
+For a more detailed documentation, see the [Reference](https://thomorl.github.io/androidx-particles/reference/1.3/).
 
 ## Other Details
 
