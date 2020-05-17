@@ -14,13 +14,13 @@ AndroidX Particles is available from JCenter.
 ### Android Studio / Gradle
 
 Add the following dependency to the build.gradle of your project:
-```
+```gradle
 dependencies {
     implementation 'androidx.particles:particles:1.3.3'
 }
 ```
 Note: If you get an error, you may need to include the JCenter repository:
-```
+```gradle
 repositories {
     jcenter()
 }
