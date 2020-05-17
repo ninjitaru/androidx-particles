@@ -19,6 +19,7 @@ package androidx.particles.modifiers;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 
+import androidx.annotation.NonNull;
 import androidx.particles.Particle;
 
 public class AlphaModifier implements ParticleModifier {
@@ -47,7 +48,7 @@ public class AlphaModifier implements ParticleModifier {
 	}
 
 	@Override
-	public void apply(Particle particle, long milliseconds) {
+	public void apply(@NonNull Particle particle, long milliseconds) {
 		if (milliseconds < mStartTime) {
 			particle.mAlpha = mInitialValue;
 		}

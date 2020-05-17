@@ -18,6 +18,7 @@ package androidx.particles.initializers;
 
 import java.util.Random;
 
+import androidx.annotation.NonNull;
 import androidx.particles.Particle;
 
 public class ScaleInitializer implements ParticleInitializer {
@@ -31,7 +32,7 @@ public class ScaleInitializer implements ParticleInitializer {
 	}
 
 	@Override
-	public void initParticle(Particle p, Random r) {
+	public void initParticle(@NonNull Particle p, @NonNull Random r) {
 		float scale = r.nextFloat()*(mMaxScale-mMinScale) + mMinScale;
 		p.mScale = scale;
 	}

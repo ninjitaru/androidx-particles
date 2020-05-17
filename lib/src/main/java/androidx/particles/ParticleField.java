@@ -23,15 +23,18 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 class ParticleField extends View {
 
 	private ArrayList<Particle> mParticles;
 
-	public ParticleField(Context context, AttributeSet attrs, int defStyle) {
+	public ParticleField(Context context, @Nullable AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 	}
 	
-	public ParticleField(Context context, AttributeSet attrs) {
+	public ParticleField(Context context, @Nullable AttributeSet attrs) {
 		super(context, attrs);
 	}
 	
@@ -39,12 +42,12 @@ class ParticleField extends View {
 		super(context);
 	}
 
-	public void setParticles(ArrayList<Particle> particles) {
+	public void setParticles(@NonNull ArrayList<Particle> particles) {
 		mParticles = particles;
 	}
 	
 	@Override
-	protected void onDraw(Canvas canvas) {
+	protected void onDraw(@NonNull Canvas canvas) {
 		super.onDraw(canvas);
 		// Draw all the particles
 		synchronized (mParticles) {

@@ -18,6 +18,7 @@ package androidx.particles.initializers;
 
 import java.util.Random;
 
+import androidx.annotation.NonNull;
 import androidx.particles.Particle;
 
 public class SpeedByComponentsInitializer implements ParticleInitializer {
@@ -35,7 +36,7 @@ public class SpeedByComponentsInitializer implements ParticleInitializer {
 	}
 
 	@Override
-	public void initParticle(Particle p, Random r) {
+	public void initParticle(@NonNull Particle p, @NonNull Random r) {
 		p.mSpeedX = r.nextFloat()*(mMaxSpeedX-mMinSpeedX)+mMinSpeedX;
 		p.mSpeedY = r.nextFloat()*(mMaxSpeedY-mMinSpeedY)+mMinSpeedY;
 	}

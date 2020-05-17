@@ -19,12 +19,15 @@ package androidx.particles;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.BitmapDrawable;
 
+import androidx.annotation.NonNull;
+
 public class AnimatedParticle extends Particle {
 
+	@NonNull
 	private AnimationDrawable mAnimationDrawable;
 	private int mTotalTime;
 
-	public AnimatedParticle(AnimationDrawable animationDrawable) {
+	public AnimatedParticle(@NonNull AnimationDrawable animationDrawable) {
 		mAnimationDrawable = animationDrawable;
 		mImage = ((BitmapDrawable) mAnimationDrawable.getFrame(0)).getBitmap();
 		// If it is a repeating animation, calculate the time

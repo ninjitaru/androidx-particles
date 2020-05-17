@@ -16,6 +16,7 @@
  */
 package androidx.particles.modifiers;
 
+import androidx.annotation.NonNull;
 import androidx.particles.Particle;
 
 public class AccelerationModifier implements ParticleModifier {
@@ -31,7 +32,7 @@ public class AccelerationModifier implements ParticleModifier {
 	}
 
 	@Override
-	public void apply(Particle particle, long milliseconds) {
+	public void apply(@NonNull Particle particle, long milliseconds) {
 		particle.mCurrentX += mVelocityX*milliseconds*milliseconds;
 		particle.mCurrentY += mVelocityY*milliseconds*milliseconds;
 	}

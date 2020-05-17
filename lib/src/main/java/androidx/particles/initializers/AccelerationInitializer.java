@@ -19,6 +19,7 @@ package androidx.particles.initializers;
 import java.util.Random;
 
 import androidx.annotation.IntRange;
+import androidx.annotation.NonNull;
 import androidx.particles.Particle;
 
 public class AccelerationInitializer implements ParticleInitializer {
@@ -38,7 +39,7 @@ public class AccelerationInitializer implements ParticleInitializer {
 	}
 
 	@Override
-	public void initParticle(Particle p, Random r) {
+	public void initParticle(@NonNull Particle p, @NonNull Random r) {
 		float angle = mMinAngle;
 		if (mMaxAngle != mMinAngle) {
 			angle = r.nextInt(mMaxAngle - mMinAngle) + mMinAngle;

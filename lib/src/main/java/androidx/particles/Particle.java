@@ -18,6 +18,7 @@ package androidx.particles;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Px;
 import androidx.particles.modifiers.ParticleModifier;
 
@@ -111,7 +112,7 @@ public class Particle {
 		return true;
 	}
 	
-	public void draw(Canvas c) {
+	public void draw(@NonNull Canvas c) {
 		mMatrix.reset();
 		mMatrix.postRotate(mRotation, mBitmapHalfWidth, mBitmapHalfHeight);
 		mMatrix.postScale(mScale, mScale, mBitmapHalfWidth, mBitmapHalfHeight);
@@ -120,9 +121,9 @@ public class Particle {
 		c.drawBitmap(mImage, mMatrix, mPaint);
 	}
 
-	public Particle activate(long startingMillisecond, List<ParticleModifier> modifiers) {
+	public Particle activate(long startingMillisecond, @NonNull List<ParticleModifier> modifiers) {
 		mStartingMillisecond = startingMillisecond;
-		// We do store a reference to the list, there is no need to copy, since the modifiers do not carte about states 
+		// We do store a reference to the list, there is no need to copy, since the modifiers do not care about states
 		mModifiers = modifiers;
 		return this;
 	}
