@@ -232,12 +232,6 @@ public class ParticleSystem {
 		this((ViewGroup) a.findViewById(parentViewId), maxParticles, drawable, timeToLive);
 	}
 
-	// TODO Make private?
-	@Px
-	public float dpToPx(@Dimension(unit=Dimension.DP) float dp) {
-		return dp * mDpToPxScale;
-	}
-
     /**
      * Utility constructor that receives a Bitmap.
      *
@@ -250,22 +244,6 @@ public class ParticleSystem {
 						  long timeToLive) {
         this(a, maxParticles, bitmap, timeToLive, android.R.id.content);
     }
-
-	/**
-	 * Utility constructor that receives an array of Bitmaps.
-	 *
-	 * @param parentView The parent view group.
-	 * @param maxParticles The maximum number of particles.
-	 * @param bitmaps An array of bitmaps, which will be randomly assigned to particles.
-	 * @param timeToLive The time to live for the particles.
-	 */
-	public ParticleSystem(@NonNull ViewGroup parentView, int maxParticles,
-						  @NonNull Bitmap[] bitmaps, long timeToLive) {
-		this(parentView, maxParticles, timeToLive);
-		for (int i=0; i<mMaxParticles; i++) {
-			mParticles.add(new Particle(bitmaps[mRandom.nextInt(bitmaps.length)]));
-		}
-	}
 
 	/**
 	 * Utility constructor that receives a Bitmap.
@@ -287,6 +265,35 @@ public class ParticleSystem {
 	/**
 	 * Utility constructor that receives an array of Bitmaps.
 	 *
+	 * @param parentView The parent view group.
+	 * @param maxParticles The maximum number of particles.
+	 * @param bitmaps An array of bitmaps, which will be randomly assigned to particles.
+	 * @param timeToLive The time to live for the particles.
+	 */
+	public ParticleSystem(@NonNull ViewGroup parentView, int maxParticles,
+						  @NonNull Bitmap[] bitmaps, long timeToLive) {
+		this(parentView, maxParticles, timeToLive);
+		for (int i=0; i<mMaxParticles; i++) {
+			mParticles.add(new Particle(bitmaps[mRandom.nextInt(bitmaps.length)]));
+		}
+	}
+
+	/**
+	 * Utility constructor that receives an array of Bitmaps.
+	 *
+	 * @param a The parent activity.
+	 * @param maxParticles The maximum number of particles.
+	 * @param bitmaps An array of bitmaps, which will be randomly assigned to particles.
+	 * @param timeToLive The time to live for the particles.
+	 */
+	public ParticleSystem(@NonNull Activity a, int maxParticles, @NonNull Bitmap[] bitmaps,
+						  long timeToLive) {
+		this(a, maxParticles, bitmaps, timeToLive, android.R.id.content);
+	}
+
+	/**
+	 * Utility constructor that receives an array of Bitmaps.
+	 *
 	 * @param a The parent activity.
 	 * @param maxParticles The maximum number of particles.
 	 * @param bitmaps An array of bitmaps, which will be randomly assigned to particles.
@@ -300,8 +307,6 @@ public class ParticleSystem {
 			mParticles.add(new Particle(bitmaps[mRandom.nextInt(bitmaps.length)]));
 		}
 	}
-
-	// TODO Create more, flexible bitmap array constructors
 
     /**
      * Utility constructor that receives an AnimationDrawable.
@@ -342,6 +347,12 @@ public class ParticleSystem {
 	 */
 	public static void setFPS(double fps) {
 		TIMER_TASK_INTERVAL = Math.round(1000 / fps);
+	}
+
+	// TODO Make protected/private?
+	@Px
+	public float dpToPx(@Dimension(unit=Dimension.DP) float dp) {
+		return dp * mDpToPxScale;
 	}
 
 	/**
