@@ -19,45 +19,64 @@ package androidx.particles.modifiers;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 
+import androidx.annotation.FloatRange;
+import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 import androidx.particles.Particle;
 
 public class AlphaModifier implements ParticleModifier {
 
-	private int mInitialValue;
-	private int mFinalValue;
+	private int mStartValue;
+	private int mEndValue;
 	private long mStartTime;
 	private long mEndTime;
 	private float mDuration;
 	private float mValueIncrement;
 	private Interpolator mInterpolator;
 
-	// TODO Rename to startValue and endValue?
-	public AlphaModifier(int initialValue, int finalValue, long startMillis, long endMillis, Interpolator interpolator) {
-		mInitialValue = initialValue;
-		mFinalValue = finalValue;
+	public AlphaModifier(@IntRange(from=0, to=255) int startValue, @IntRange(from=0, to=255) int endValue,
+						 long startMillis, long endMillis, @NonNull Interpolator interpolator) {
+		mStartValue = startValue;
+		mEndValue = endValue;
 		mStartTime = startMillis;
 		mEndTime = endMillis;
 		mDuration = mEndTime - mStartTime;
-		mValueIncrement = mFinalValue-mInitialValue;
+		mValueIncrement = mEndValue - mStartValue;
 		mInterpolator = interpolator;
 	}
 	
-	public AlphaModifier(int initialValue, int finalValue, long startMillis, long endMillis) {
-		this(initialValue, finalValue, startMillis, endMillis, new LinearInterpolator());
+	public AlphaModifier(@IntRange(from=0, to=255) int startValue, @IntRange(from=0, to=255) int endValue,
+						 long startMillis, long endMillis) {
+		this(startValue, endValue, startMillis, endMillis, new LinearInterpolator());
+	}
+
+	public AlphaModifier(@FloatRange(from=0f, to=1f) float startValue, @FloatRange(from=0f, to=1f) float endValue,
+						 long startMillis, long endMillis, @NonNull Interpolator interpolator) {
+		this(floatCompToInt(startValue), floatCompToInt(endValue), startMillis, endMillis, interpolator);
+	}
+
+	public AlphaModifier(@FloatRange(from=0f, to=1f) float startValue, @FloatRange(from=0f, to=1f) float endValue,
+						 long startMillis, long endMillis) {
+		this(floatCompToInt(startValue), floatCompToInt(endValue), startMillis, endMillis);
+	}
+
+	// TODO Create tests for this function
+	// Converts a float color component (0.0..1.0) to an int color component (0..255)
+	private static int floatCompToInt(float c) {
+		return (int) (255*c + 0.5f);
 	}
 
 	@Override
 	public void apply(@NonNull Particle particle, long milliseconds) {
 		if (milliseconds < mStartTime) {
-			particle.mAlpha = mInitialValue;
+			particle.mAlpha = mStartValue;
 		}
 		else if (milliseconds > mEndTime) {
-			particle.mAlpha = mFinalValue;
+			particle.mAlpha = mEndValue;
 		}
 		else {	
-			float interpolaterdValue = mInterpolator.getInterpolation((milliseconds- mStartTime)*1f/mDuration);
-			int newAlphaValue = (int) (mInitialValue + mValueIncrement*interpolaterdValue);
+			float interpolatedValue = mInterpolator.getInterpolation((milliseconds- mStartTime)*1f/mDuration);
+			int newAlphaValue = (int) (mStartValue + mValueIncrement*interpolatedValue);
 			particle.mAlpha = newAlphaValue;
 		}		
 	}

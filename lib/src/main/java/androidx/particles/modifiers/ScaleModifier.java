@@ -24,39 +24,40 @@ import androidx.particles.Particle;
 
 public class ScaleModifier implements ParticleModifier {
 
-	private float mInitialValue;
-	private float mFinalValue;
-	private long mEndTime;
+	private float mStartValue;
+	private float mEndValue;
 	private long mStartTime;
+	private long mEndTime;
 	private long mDuration;
 	private float mValueIncrement;
 	private Interpolator mInterpolator;
 
-	public ScaleModifier(float initialValue, float finalValue, long startMillis, long endMillis, Interpolator interpolator) {
-		mInitialValue = initialValue;
-		mFinalValue = finalValue;
+	public ScaleModifier(float startValue, float endValue, long startMillis, long endMillis,
+						 @NonNull Interpolator interpolator) {
+		mStartValue = startValue;
+		mEndValue = endValue;
 		mStartTime = startMillis;
 		mEndTime = endMillis;
 		mDuration = mEndTime - mStartTime;
-		mValueIncrement = mFinalValue-mInitialValue;
+		mValueIncrement = mEndValue - mStartValue;
 		mInterpolator = interpolator;
 	}
 	
-	public ScaleModifier(float initialValue, float finalValue, long startMillis, long endMillis) {
-		this (initialValue, finalValue, startMillis, endMillis, new LinearInterpolator());
+	public ScaleModifier(float startValue, float endValue, long startMillis, long endMillis) {
+		this(startValue, endValue, startMillis, endMillis, new LinearInterpolator());
 	}
 	
 	@Override
 	public void apply(@NonNull Particle particle, long milliseconds) {
 		if (milliseconds < mStartTime) {
-			particle.mScale = mInitialValue;
+			particle.mScale = mStartValue;
 		}
 		else if (milliseconds > mEndTime) {
-			particle.mScale = mFinalValue;
+			particle.mScale = mEndValue;
 		}
 		else {
 			float interpolatedValue = mInterpolator.getInterpolation((milliseconds - mStartTime)*1f/mDuration);
-			float newScale = mInitialValue + mValueIncrement*interpolatedValue;
+			float newScale = mStartValue + mValueIncrement*interpolatedValue;
 			particle.mScale = newScale;
 		}
 	}
