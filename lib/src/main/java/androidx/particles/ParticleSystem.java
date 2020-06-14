@@ -57,6 +57,16 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * A 2D particle system.
+ * <p>
+ * A {@code ParticleSystem} can be created from instances of {@link android.graphics.drawable.Drawable},
+ * {@link android.graphics.drawable.AnimationDrawable}, {@link android.graphics.Bitmap}, or from a {@code Bitmap[]} array.
+ * <p>
+ * A {@code ParticleSystem} can either be fired once by calling {@link #oneShot(View, int)},
+ * emit particles continuously until {@link #stopEmitting()} or {@link #cancel()} is called,
+ * or emit particles for a certain amount of time by calling {@link #emit(View, int, int)}.
+ */
 public class ParticleSystem {
 
 	private static long TIMER_TASK_INTERVAL = 33; // Default 30fps
@@ -263,12 +273,14 @@ public class ParticleSystem {
 	}
 
 	/**
-	 * Utility constructor that receives an array of Bitmaps.
+	 * Constructor that creates a single particle system with multiple different images from an array of Bitmaps.
+	 * The particles are created randomly from the given {@code bitmaps} array.
 	 *
 	 * @param parentView The parent view group.
 	 * @param maxParticles The maximum number of particles.
 	 * @param bitmaps An array of bitmaps, which will be randomly assigned to particles.
 	 * @param timeToLive The time to live for the particles.
+     * @since 1.4
 	 */
 	public ParticleSystem(@NonNull ViewGroup parentView, int maxParticles,
 						  @NonNull Bitmap[] bitmaps, long timeToLive) {
@@ -279,12 +291,14 @@ public class ParticleSystem {
 	}
 
 	/**
-	 * Utility constructor that receives an array of Bitmaps.
+	 * Multi-image constructor that receives an array of Bitmaps.
+	 * The particles are created randomly from the given {@code bitmaps} array.
 	 *
 	 * @param a The parent activity.
 	 * @param maxParticles The maximum number of particles.
 	 * @param bitmaps An array of bitmaps, which will be randomly assigned to particles.
 	 * @param timeToLive The time to live for the particles.
+     * @since 1.4
 	 */
 	public ParticleSystem(@NonNull Activity a, int maxParticles, @NonNull Bitmap[] bitmaps,
 						  long timeToLive) {
@@ -292,17 +306,21 @@ public class ParticleSystem {
 	}
 
 	/**
-	 * Utility constructor that receives an array of Bitmaps.
+	 * Multi-image constructor that receives an array of Bitmaps.
+	 * The particles are created randomly from the given {@code bitmaps} array.
 	 *
 	 * @param a The parent activity.
 	 * @param maxParticles The maximum number of particles.
 	 * @param bitmaps An array of bitmaps, which will be randomly assigned to particles.
 	 * @param timeToLive The time to live for the particles.
 	 * @param parentViewId The view Id for the parent of the particle system.
+     * @since 1.4
 	 */
 	public ParticleSystem(@NonNull Activity a, int maxParticles, @NonNull Bitmap[] bitmaps,
 						  long timeToLive, @IdRes int parentViewId) {
 		this((ViewGroup) a.findViewById(parentViewId), maxParticles, timeToLive);
+		// TODO Create utility function for this task
+		// TODO Create empty array tests
 		for (int i=0; i<mMaxParticles; i++) {
 			mParticles.add(new Particle(bitmaps[mRandom.nextInt(bitmaps.length)]));
 		}
@@ -763,9 +781,9 @@ public class ParticleSystem {
 		startAnimator(interpolator, mTimeToLive);
 	}
 
-	private void startAnimator(Interpolator interpolator, long animnationTime) {
-		mAnimator = ValueAnimator.ofInt(0, (int) animnationTime);
-		mAnimator.setDuration(animnationTime);
+	private void startAnimator(Interpolator interpolator, long animationTime) {
+		mAnimator = ValueAnimator.ofInt(0, (int) animationTime);
+		mAnimator.setDuration(animationTime);
 		mAnimator.addUpdateListener(new AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {

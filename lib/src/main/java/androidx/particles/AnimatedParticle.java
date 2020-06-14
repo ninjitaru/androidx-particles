@@ -16,11 +16,18 @@
  */
 package androidx.particles;
 
+import android.app.Activity;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.BitmapDrawable;
 
 import androidx.annotation.NonNull;
 
+/**
+ * A single, animated 2D particle. Used if a {@link ParticleSystem} is initialized with an
+ * {@link AnimationDrawable}.
+ *
+ * @see ParticleSystem#ParticleSystem(Activity, int, AnimationDrawable, long) 
+ */
 public class AnimatedParticle extends Particle {
 
 	@NonNull

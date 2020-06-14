@@ -27,6 +27,9 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 
+/**
+ * A single 2D particle.
+ */
 public class Particle {
 
 	protected Bitmap mImage;
