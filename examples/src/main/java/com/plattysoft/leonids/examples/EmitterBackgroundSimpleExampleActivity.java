@@ -1,13 +1,13 @@
 package com.plattysoft.leonids.examples;
 
-import androidx.particles.ParticleSystem;
-
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-public class EmiterSimpleExampleActivity extends Activity implements OnClickListener {
+import androidx.particles.ParticleSystem;
+
+public class EmitterBackgroundSimpleExampleActivity extends Activity implements OnClickListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +18,7 @@ public class EmiterSimpleExampleActivity extends Activity implements OnClickList
 
 	@Override
 	public void onClick(View arg0) {
-		new ParticleSystem(this, 50, R.drawable.star_pink, 1000)
+		new ParticleSystem(this, 50, R.drawable.star_pink, 1000, R.id.background_hook)
 		.setSpeedRange(0.1f, 0.25f)
 		.emit(arg0, 100);
 	}

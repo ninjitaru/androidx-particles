@@ -26,6 +26,6 @@ public class DustExampleActivity extends Activity implements OnClickListener {
 		.setInitialRotationRange(0, 360)
 		.addModifier(new AlphaModifier(255, 0, 1000, 3000))
 		.addModifier(new ScaleModifier(0.5f, 2f, 0, 1000))
-		.oneShot(findViewById(R.id.emiter_bottom), 4);
+		.oneShot(findViewById(R.id.emitter_bottom), 4);
 	}
 }

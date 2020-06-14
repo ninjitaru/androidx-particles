@@ -67,13 +67,13 @@ new ParticleSystem(this, 80, R.drawable.confeti2, 10000)
         .setSpeedModuleAndAngleRange(0f, 0.3f, 180, 180)
         .setRotationSpeed(144)
         .setAcceleration(0.00005f, 90)
-        .emit(findViewById(R.id.emiter_top_right), 8);
+        .emit(findViewById(R.id.emitter_top_right), 8);
 
 new ParticleSystem(this, 80, R.drawable.confeti3, 10000)
         .setSpeedModuleAndAngleRange(0f, 0.3f, 0, 0)
         .setRotationSpeed(144)
         .setAcceleration(0.00005f, 90)
-        .emit(findViewById(R.id.emiter_top_left), 8);
+        .emit(findViewById(R.id.emitter_top_left), 8);
 ```
 
 It uses an initializer for the speed as module and angle ranges, a fixed speed rotation and external acceleration.

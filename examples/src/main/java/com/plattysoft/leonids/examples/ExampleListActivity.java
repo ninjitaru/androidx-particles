@@ -27,11 +27,11 @@ public class ExampleListActivity extends ListActivity {
 			new Sample("One Shot Simple", OneShotSimpleExampleActivity.class),
 			new Sample("One Shot Advanced", OneShotAdvancedExampleActivity.class),
 
-			new Sample("Emiter Simple", EmiterSimpleExampleActivity.class),
-			new Sample("Emiting on background [NEW]", EmiterBackgroundSimpleExampleActivity.class),
-			new Sample("Emiter Intermediate", EmiterIntermediateExampleActivity.class),
-			new Sample("Emiter Time Limited", EmiterTimeLimitedExampleActivity.class),
-			new Sample("Emit with Gravity [NEW]", EmiterWithGravityExampleActivity.class),
+			new Sample("Emitter Simple", EmitterSimpleExampleActivity.class),
+			new Sample("Emitting on background [NEW]", EmitterBackgroundSimpleExampleActivity.class),
+			new Sample("Emitter Intermediate", EmitterIntermediateExampleActivity.class),
+			new Sample("Emitter Time Limited", EmitterTimeLimitedExampleActivity.class),
+			new Sample("Emit with Gravity [NEW]", EmitterWithGravityExampleActivity.class),
 
 			new Sample("Follow touch [NEW]", FollowCursorExampleActivity.class),
 			new Sample("Animated particles", AnimatedParticlesExampleActivity.class),

@@ -6,9 +6,8 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.animation.AccelerateInterpolator;
 
-public class EmiterTimeLimitedExampleActivity extends Activity implements OnClickListener {
+public class EmitterSimpleExampleActivity extends Activity implements OnClickListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,13 +18,9 @@ public class EmiterTimeLimitedExampleActivity extends Activity implements OnClic
 
 	@Override
 	public void onClick(View arg0) {
-		ParticleSystem ps = new ParticleSystem(this, 100, R.drawable.star_pink, 1000);
-		ps.setScaleRange(0.7f, 1.3f);
-		ps.setSpeedModuleAndAngleRange(0.07f, 0.16f, 0, 180);
-		ps.setRotationSpeedRange(90, 180);
-		ps.setAcceleration(0.00013f, 90);
-		ps.setFadeOut(200, new AccelerateInterpolator());
-		ps.emit(arg0, 100, 2000);
+		new ParticleSystem(this, 50, R.drawable.star_pink, 1000)
+		.setSpeedRange(0.1f, 0.25f)
+		.emit(arg0, 100);
 	}
 
 }
