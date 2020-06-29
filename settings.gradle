@@ -6,5 +6,3 @@ rootProject.name = 'androidx-particles'
 
 // Set the library module's name
 project(':lib').name = 'particles'
-// Set the example module's name
-project(':examples').name = 'LeonidsExamples'       // Called 'LeonidsExamples' for historical reasons

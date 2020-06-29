@@ -1,5 +1,6 @@
 package com.plattysoft.leonids.examples;
 
+import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,11 +10,11 @@ import android.widget.ListView;
 
 public class ExampleListActivity extends ListActivity {
 
-	private class Sample {
+	private static class Sample {
 		public String name;
-		public Class activityClass;
+		public Class<? extends Activity> activityClass;
 
-		public Sample(String name, Class activityClass) {
+		public Sample(String name, Class<? extends Activity> activityClass) {
 			this.name = name;
 			this.activityClass = activityClass;
 		}
@@ -28,13 +29,13 @@ public class ExampleListActivity extends ListActivity {
 			new Sample("One Shot Advanced", OneShotAdvancedExampleActivity.class),
 
 			new Sample("Emitter Simple", EmitterSimpleExampleActivity.class),
-			new Sample("Emitting on background [NEW]", EmitterBackgroundSimpleExampleActivity.class),
+			new Sample("Emitting on Background", EmitterBackgroundSimpleExampleActivity.class),
 			new Sample("Emitter Intermediate", EmitterIntermediateExampleActivity.class),
 			new Sample("Emitter Time Limited", EmitterTimeLimitedExampleActivity.class),
-			new Sample("Emit with Gravity [NEW]", EmitterWithGravityExampleActivity.class),
+			new Sample("Emit with Gravity", EmitterWithGravityExampleActivity.class),
 
-			new Sample("Follow touch [NEW]", FollowCursorExampleActivity.class),
-			new Sample("Animated particles", AnimatedParticlesExampleActivity.class),
+			new Sample("Follow Touch", FollowCursorExampleActivity.class),
+			new Sample("Animated Particles", AnimatedParticlesExampleActivity.class),
 			new Sample("Fireworks", FireworksExampleActivity.class),
 			new Sample("Confetti [Rabbit and Eggs]", ConfettiExampleActivity.class),
 			new Sample("Dust [Rabbit and Eggs]", DustExampleActivity.class),
@@ -44,12 +45,12 @@ public class ExampleListActivity extends ListActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		String sampleList[] = new String [samples.length];
+		String[] sampleList = new String[samples.length];
 		int n = 0;
 		for (Sample sample : samples) {
 			sampleList[n++] = sample.name;
 		}
-		setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, sampleList));
+		setListAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, sampleList));
 	}
 
 	@Override
