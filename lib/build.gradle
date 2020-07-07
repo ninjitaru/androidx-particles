@@ -68,6 +68,13 @@ task javadoc(type: Javadoc) {
     }
 }
 
+// Add classes from support libraries (especially annotations) to the Javadoc classpath
+afterEvaluate {
+    javadoc.classpath += files(android.libraryVariants.collect { variant ->
+        variant.javaCompileProvider.get().classpath.files
+    })
+}
+
 task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc.destinationDir
     archiveClassifier = 'javadoc'
