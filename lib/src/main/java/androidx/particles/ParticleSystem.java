@@ -285,6 +285,12 @@ public class ParticleSystem {
 	public ParticleSystem(@NonNull ViewGroup parentView, int maxParticles,
 						  @NonNull Bitmap[] bitmaps, long timeToLive) {
 		this(parentView, maxParticles, timeToLive);
+
+		// Ensure the Bitmap array is not empty
+		if (bitmaps.length == 0) {
+			throw new IllegalArgumentException("Bitmap array can not be empty");
+		}
+
 		for (int i=0; i<mMaxParticles; i++) {
 			mParticles.add(new Particle(bitmaps[mRandom.nextInt(bitmaps.length)]));
 		}
@@ -319,8 +325,12 @@ public class ParticleSystem {
 	public ParticleSystem(@NonNull Activity a, int maxParticles, @NonNull Bitmap[] bitmaps,
 						  long timeToLive, @IdRes int parentViewId) {
 		this((ViewGroup) a.findViewById(parentViewId), maxParticles, timeToLive);
-		// TODO Create utility function for this task
-		// TODO Create empty array tests
+
+		// Ensure the Bitmap array is not empty
+		if (bitmaps.length == 0) {
+			throw new IllegalArgumentException("Bitmap array can not be empty");
+		}
+
 		for (int i=0; i<mMaxParticles; i++) {
 			mParticles.add(new Particle(bitmaps[mRandom.nextInt(bitmaps.length)]));
 		}
