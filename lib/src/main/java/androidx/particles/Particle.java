@@ -71,8 +71,12 @@ public class Particle {
 	@Px
 	private int mBitmapHalfHeight;
 
+	private boolean mConfigurated = false;
+
 	private List<ParticleModifier> mModifiers;
 
+	public boolean isConfigurated() { return mConfigurated; }
+	public long timeToLive() { return mTimeToLive; }
 
 	protected Particle() {		
 		mMatrix = new Matrix();
@@ -86,10 +90,14 @@ public class Particle {
 
 	public void init() {
 		mScale = 1;
-		mAlpha = 255;	
+		mAlpha = 255;
+		mConfigurated = false;
 	}
 	
 	public void configure(long timeToLive, @Px float emitterX, @Px float emitterY) {
+		if (mConfigurated) {
+			return;
+		}
 		mBitmapHalfWidth = mImage.getWidth()/2;
 		mBitmapHalfHeight = mImage.getHeight()/2;
 		
@@ -99,6 +107,7 @@ public class Particle {
 		mCurrentY = mInitialY;
 		
 		mTimeToLive = timeToLive;
+		mConfigurated = true;
 	}
 
 	public boolean update(long milliseconds) {

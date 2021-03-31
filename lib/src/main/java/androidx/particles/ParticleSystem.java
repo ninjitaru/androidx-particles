@@ -47,7 +47,7 @@ import androidx.particles.initializers.RotationSpeedInitializer;
 import androidx.particles.initializers.ScaleInitializer;
 import androidx.particles.initializers.SpeedByComponentsInitializer;
 import androidx.particles.initializers.SpeedModuleAndRangeInitializer;
-import androidx.particles.modifiers.AlphaModifier;
+import androidx.particles.modifiers.AlphaModifierV2;
 import androidx.particles.modifiers.ParticleModifier;
 
 import java.lang.ref.WeakReference;
@@ -603,7 +603,7 @@ public class ParticleSystem {
 	 */
 	@NonNull
 	public ParticleSystem setFadeOut(long millisecondsBeforeEnd, Interpolator interpolator) {
-		mModifiers.add(new AlphaModifier(255, 0, mTimeToLive-millisecondsBeforeEnd, mTimeToLive, interpolator));
+		mModifiers.add(new AlphaModifierV2(255, 0, millisecondsBeforeEnd, interpolator));
 		return this;
 	}
 
@@ -877,9 +877,11 @@ public class ParticleSystem {
 		for (int i=0; i<mInitializers.size(); i++) {
 			mInitializers.get(i).initParticle(p, mRandom);
 		}
-		int particleX = getFromRange (mEmitterXMin, mEmitterXMax);
-		int particleY = getFromRange (mEmitterYMin, mEmitterYMax);
-		p.configure(mTimeToLive, particleX, particleY);
+		if (!p.isConfigurated()) {
+			int particleX = getFromRange (mEmitterXMin, mEmitterXMax);
+			int particleY = getFromRange (mEmitterYMin, mEmitterYMax);
+			p.configure(mTimeToLive, particleX, particleY);
+		}
 		p.activate(delay, mModifiers);
 		mActiveParticles.add(p);
 		mActivatedParticles++;
