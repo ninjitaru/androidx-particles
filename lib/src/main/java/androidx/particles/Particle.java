@@ -125,6 +125,9 @@ public class Particle {
 	}
 	
 	public void draw(@NonNull Canvas c) {
+		if (mImage == null) {
+			return;
+		}
 		mMatrix.reset();
 		mMatrix.postRotate(mRotation, mBitmapHalfWidth, mBitmapHalfHeight);
 		mMatrix.postScale(mScale, mScale, mBitmapHalfWidth, mBitmapHalfHeight);

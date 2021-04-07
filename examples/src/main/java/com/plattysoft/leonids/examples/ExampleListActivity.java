@@ -26,6 +26,7 @@ public class ExampleListActivity extends ListActivity {
 	 */
 	private Sample[] samples = {
 			new Sample("One Shot Simple", OneShotSimpleExampleActivity.class),
+			new Sample("Multi Drawable Simple", MultiDrawableExampleActivity.class),
 			new Sample("One Shot Advanced", OneShotAdvancedExampleActivity.class),
 
 			new Sample("Emitter Simple", EmitterSimpleExampleActivity.class),
